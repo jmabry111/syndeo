@@ -1,4 +1,3 @@
-<h3><%= @attendee.id %></h3>
 <%= form_for @changeset, attendee_weekly_info_path(@conn, :create, @attendee), fn f -> %>
   <%= render ConnectionCard.FormView, "_form_errors.html", changeset: @changeset, form: f %>
 
