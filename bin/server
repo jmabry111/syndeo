@@ -1,0 +1,2 @@
+#!/bin/sh
+mix do deps.get, development_seeds && iex -S mix phoenix.server

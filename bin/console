@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# Run this script to run iex on heroku
+
+set -e
+
+target="${1:-staging}"
+
+heroku run "POOL_SIZE=2 iex -S mix" --remote "$target"

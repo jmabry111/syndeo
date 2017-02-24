@@ -1,0 +1,18 @@
+#!/bin/sh
+
+# Run this script to deploy the app to Heroku.
+
+set -e
+
+branch="$(git symbolic-ref HEAD --short)"
+target="${1:-staging}"
+
+git push "$target" "$branch:master"
+heroku pg:backups capture --remote "$target"
+heroku run "POOL_SIZE=2 mix ecto.migrate" --exit-code --remote "$target"
+
+if [ "$target" = "staging" ]; then
+  heroku run "POOL_SIZE=2 mix development_seeds" --exit-code --remote "$target"
+fi
+
+heroku restart --remote "$target"
