@@ -4,7 +4,7 @@ use Mix.Config
 # you can enable the server option below.
 config :connection_card, ConnectionCard.Endpoint,
   http: [port: 4001],
-  server: false
+  server: true
 
 # Print only warnings and errors during test
 config :logger, level: :warn
@@ -12,8 +12,8 @@ config :logger, level: :warn
 # Configure your database
 config :connection_card, ConnectionCard.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
   database: "connection_card_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
+
+config :hound, driver: "phantomjs", port: 8910
