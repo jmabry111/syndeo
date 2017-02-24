@@ -16,6 +16,7 @@ defmodule ConnectionCard.WeeklyInfo do
 
   defp required_fields do
     ~w(
+       attendee_id
        week_date
        attending_meal
      )a
@@ -32,7 +33,6 @@ defmodule ConnectionCard.WeeklyInfo do
   end
 
   def changeset(struct, params \\ %{}, attendee) do
-    IO.inspect("HEY>>> I AM HERE #{attendee.id}")
     struct
     |> cast(params, required_fields, optional_fields)
     |> validate_required(required_fields)

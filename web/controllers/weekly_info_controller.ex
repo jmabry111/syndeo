@@ -17,8 +17,6 @@ defmodule ConnectionCard.WeeklyInfoController do
     attendee = find_attendee!(attendee_id)
     changeset = WeeklyInfo.changeset(%WeeklyInfo{}, params, attendee)
 
-    IO.inspect("Attendee: #{attendee.id}")
-    IO.inspect(changeset)
     case Repo.insert(changeset) do
       {:ok, _weekly_info} ->
         conn

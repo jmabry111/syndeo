@@ -8,13 +8,13 @@
     <thead>
       <tr>
         <th>Week date</th>
-        <th>Attended</th>
+        <th>Attended Wednesday?</th>
 
         <th></th>
       </tr>
     </thead>
     <tbody>
-  <%= for weekly_info <- @weeklyinfo do %>
+  <%= for weekly_info <- @weekly_info do %>
       <tr>
         <td><%= weekly_info.week_date %></td>
         <td><%= weekly_info.attending_meal %></td>
