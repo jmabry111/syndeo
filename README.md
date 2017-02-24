@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/jmabry111/connection_card.svg?style=svg)](https://circleci.com/gh/jmabry111/connection_card)
+
 # ConnectionCard
 
 To start your Phoenix app:
