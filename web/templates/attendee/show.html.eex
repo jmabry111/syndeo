@@ -1,0 +1,8 @@
+<h2>Show attendee</h2>
+
+<ul>
+
+</ul>
+
+<%= link "Edit", to: attendee_path(@conn, :edit, @attendee) %>
+<%= link "Back", to: attendee_path(@conn, :index) %>

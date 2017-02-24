@@ -8,18 +8,43 @@ defmodule ConnectionCard.WeeklyInfo do
     field :num_teens, :integer
     field :num_adults, :integer
     field :prayers, :string
-    field :contact, :boolean, default: false
-    belongs_to :attendee, ConnectionCard.Attendee
+    field :contact, :string
+    belongs_to :attendee, ConnectionCard.Attendee, type: :binary_id
 
     timestamps()
   end
 
-  @doc """
-  Builds a changeset based on the `struct` and `params`.
-  """
-  def changeset(struct, params \\ %{}) do
+  defp required_fields do
+    ~w(
+       week_date
+       attending_meal
+     )a
+  end
+
+  defp optional_fields do
+    ~w(
+       num_kids
+       num_teens
+       num_adults
+       prayers
+       contact
+     )a
+  end
+
+  def changeset(struct, params \\ %{}, attendee) do
+    IO.inspect("HEY>>> I AM HERE #{attendee.id}")
     struct
-    |> cast(params, [:week_date, :attending_meal, :num_kids, :num_teens, :num_adults, :prayers, :contact])
-    |> validate_required([:week_date, :attending_meal, :num_kids, :num_teens, :num_adults, :prayers, :contact])
+    |> cast(params, required_fields, optional_fields)
+    |> validate_required(required_fields)
+  end
+
+  def contact_options do
+    [
+      "Becoming a follower of Christ",
+      "Church membership",
+      "I'd like a visit or call from the pastor",
+      "Serving at SMCC",
+      "Other (Please specify in the comments section)"
+    ]
   end
 end

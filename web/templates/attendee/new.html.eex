@@ -1,0 +1,8 @@
+<h2>New attendee</h2>
+
+<%= render(
+  "form.html",
+  changeset: @changeset,
+  action: attendee_path(@conn, :create)
+) %>
+

@@ -17,6 +17,9 @@ defmodule ConnectionCard.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
+    resources "/attendees", AttendeeController do
+      resources "/weekly_info", WeeklyInfoController
+    end
   end
 
   # Other scopes may use custom stacks.

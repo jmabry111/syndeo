@@ -1,0 +1,28 @@
+<h2>Listing attendees</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for attendee <- @attendees do %>
+    <tr>
+      <td><%= attendee.name %></td>
+      <td><%= attendee.email %></td>
+
+      <td class="text-right">
+        <%= link "Show", to: attendee_path(@conn, :show, attendee), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: attendee_path(@conn, :edit, attendee), class: "btn btn-default btn-xs" %>
+        <%= link "Delete", to: attendee_path(@conn, :delete, attendee), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= link "New attendee", to: attendee_path(@conn, :new) %>

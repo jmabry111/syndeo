@@ -3,7 +3,6 @@ defmodule ConnectionCard.Repo.Migrations.CreateAttendee do
 
   def change do
     create table(:attendees) do
-      add :id, :binary_id, primary_key: true
       add :service, :string, null: false
       add :name, :string, null: false
       add :street, :string

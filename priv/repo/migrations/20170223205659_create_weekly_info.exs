@@ -9,8 +9,8 @@ defmodule ConnectionCard.Repo.Migrations.CreateWeeklyInfo do
       add :num_teens, :integer
       add :num_adults, :integer
       add :prayers, :string
-      add :contact, :boolean, default: false, null: false
-      add :attendee_id, references(:attendee, on_delete: :nothing)
+      add :contact, :string
+      add :attendee_id, references(:attendees, type: :binary_id, on_delete: :delete_all), null: false
 
       timestamps()
     end
