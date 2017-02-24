@@ -1,0 +1,32 @@
+machine:
+  environment:
+    PATH: "$HOME/.asdf/bin:$HOME/.asdf/shims:$PATH"
+  pre:
+    - sudo curl --output /usr/local/bin/phantomjs https://s3.amazonaws.com/circle-downloads/phantomjs-2.1.1
+dependencies:
+  cache_directories:
+    - ~/.asdf
+    - ~/.npm
+    - deps
+    - _build
+  pre:
+    - npm install -g npm
+    - if ! asdf | grep version; then git clone https://github.com/HashNuke/asdf.git ~/.asdf; fi
+    - asdf plugin-add erlang https://github.com/HashNuke/asdf-erlang.git || true
+    - asdf plugin-add elixir https://github.com/HashNuke/asdf-elixir.git || true
+    - bin/setup
+  post:
+    - brunch build
+test:
+  override:
+    - bin/test_suite
+deployment:
+  staging:
+    branch: master
+    commands:
+      - bin/deploy staging
+experimental:
+  notify:
+    branches:
+      only:
+        - master

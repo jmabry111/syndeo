@@ -26,6 +26,7 @@ defmodule ConnectionCard.ConnCase do
       import Ecto.Query
 
       import ConnectionCard.Router.Helpers
+      import ConnectionCard.Factory
 
       # The default endpoint for testing
       @endpoint ConnectionCard.Endpoint

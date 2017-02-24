@@ -22,6 +22,7 @@ defmodule ConnectionCard.ModelCase do
       import Ecto.Changeset
       import Ecto.Query
       import ConnectionCard.ModelCase
+      import ConnectionCard.Factory
     end
   end
 
