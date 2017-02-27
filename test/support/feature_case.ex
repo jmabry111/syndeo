@@ -5,12 +5,12 @@ defmodule ConnectionCard.FeatureCase do
     quote do
       use Hound.Helpers
 
-      import Ecto.Model, except: [build: 2]
+      import Ecto.Schema, except: [build: 2]
       import Ecto.Query, only: [from: 2]
       import ConnectionCard.Router.Helpers
       import ConnectionCard.FeatureHelpers
       import ConnectionCard.RoleHelpers
-      import ConnectionCard.AuthHelpers
+      #    import ConnectionCard.AuthHelpers
       import ConnectionCard.Factory
 
       alias ConnectionCard.Repo

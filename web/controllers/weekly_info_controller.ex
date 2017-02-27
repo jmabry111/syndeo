@@ -31,7 +31,6 @@ defmodule ConnectionCard.WeeklyInfoController do
   end
 
   def delete(conn, %{"attendee_id" => attendee_id, "id" => weekly_info_id}) do
-    attendee = find_attendee!(attendee_id)
     WeeklyInfo
     |> where(attendee_id: ^attendee_id, id: ^weekly_info_id)
     |> Repo.one

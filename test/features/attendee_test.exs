@@ -13,11 +13,11 @@ defmodule ConnectionCard.Feature.AttendeeTest do
     fill_in "attendee", :zip, with: "99999"
     select "10:30", from: "service"
     select "Adult", from: "age_range"
-    select "Member", from: "memebership_status"
-    submit
+    select "Member", from: "membership_status"
+    submit()
 
     attendee = Attendee |> Repo.one
-    assert visible_page_text =~ "Attendee created successfully"
+    assert visible_page_text() =~ "Attendee created successfully"
     assert attendee.name == "John Paul"
   end
 end
