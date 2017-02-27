@@ -57,10 +57,10 @@ if git config remote.staging.url; then
   git remote remove staging
 fi
 
-git remote add staging git@heroku.com:wilbur-staging.git > /dev/null || true
+git remote add staging git@heroku.com:smccconnection-staging.git > /dev/null || true
 
 if git config remote.production.url; then
   git remote remove production
 fi
 
-git remote add production git@heroku.com:wilbur-prod.git > /dev/null || true
+git remote add production git@heroku.com:smccconnection-prod.git > /dev/null || true
