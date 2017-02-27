@@ -15,7 +15,7 @@ defmodule Mix.Tasks.DevelopmentSeeds do
   defp tables_to_truncate do
     ~w(
        attendees
-       weekly_info
+       weeklyinfo
      )
   end
 end
