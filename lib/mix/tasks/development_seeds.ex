@@ -7,7 +7,7 @@ defmodule Mix.Tasks.DevelopmentSeeds do
     Mix.Task.run "ecto.migrate", []
     Mix.Task.run "app.start", []
 
-    for table_name <- tables_to_truncate do
+    for table_name <- tables_to_truncate() do
       Ecto.Adapters.SQL.query!(Repo, "TRUNCATE TABLE #{table_name} CASCADE")
     end
   end

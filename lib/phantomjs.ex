@@ -12,7 +12,7 @@ defmodule PhantomJS do
   # GenServer
 
   def init(_) do
-    local_storage = gen_local_storage
+    local_storage = gen_local_storage()
 
     port = Port.open(
       {:spawn, phantomjs_command(local_storage)},

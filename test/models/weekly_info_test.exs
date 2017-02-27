@@ -16,7 +16,7 @@ defmodule ConnectionCard.WeeklyInfoTest do
 
   test "changeset with valid attributes" do
     attendee = insert(:attendee)
-    changeset = WeeklyInfo.changeset(%WeeklyInfo{}, @valid_attrs, attendee)
+    changeset = WeeklyInfo.changeset(%WeeklyInfo{}, @valid_attrs)
     assert changeset.valid?
   end
 

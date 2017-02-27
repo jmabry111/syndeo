@@ -6,7 +6,7 @@ defmodule ConnectionCard.WeeklyInfoController do
 
   def index(conn, %{"attendee_id" => attendee_id}) do
     attendee = find_attendee!(attendee_id)
-    changeset = WeeklyInfo.changeset(%WeeklyInfo{}, attendee)
+    changeset = WeeklyInfo.changeset(%WeeklyInfo{})
 
     conn
     |> render_index(attendee, changeset)
@@ -14,8 +14,7 @@ defmodule ConnectionCard.WeeklyInfoController do
 
   def create(conn, %{"attendee_id" => attendee_id, "weekly_info" => weekly_info_params}) do
     params = Map.merge(weekly_info_params, %{"attendee_id" => attendee_id})
-    attendee = find_attendee!(attendee_id)
-    changeset = WeeklyInfo.changeset(%WeeklyInfo{}, params, attendee)
+    changeset = WeeklyInfo.changeset(%WeeklyInfo{}, params)
 
     case Repo.insert(changeset) do
       {:ok, _weekly_info} ->
