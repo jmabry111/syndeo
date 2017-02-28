@@ -1,0 +1,3 @@
+Thank you for filling out our connection card, <%= @attendee.name %>!<
+
+We love having you at our church and would love to see you again!

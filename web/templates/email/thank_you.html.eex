@@ -1,0 +1,5 @@
+<h1>Thank you for filling out our connection card, <%= @attendee.name %>!</h1>
+
+<p>
+We love having you at our church and would love to see you again!
+</p>

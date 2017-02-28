@@ -1,7 +1,8 @@
 defmodule ConnectionCard.AttendeeController do
   use ConnectionCard.Web, :controller
-
   alias ConnectionCard.Attendee
+  alias ConnectionCard.AttendeeEmail
+  alias ConnectionCard.Mailer
 
   def index(conn, _params) do
     attendees = Repo.all(Attendee)
@@ -18,6 +19,10 @@ defmodule ConnectionCard.AttendeeController do
 
     case Repo.insert(changeset) do
       {:ok, attendee} ->
+        attendee
+        |> AttendeeEmail.thank_you_email
+        |> Mailer.deliver_later
+
         conn
         |> put_flash(:info, "Attendee created successfully.")
         |> redirect(to: attendee_weekly_info_path(conn, :index, attendee))

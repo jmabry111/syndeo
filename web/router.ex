@@ -9,6 +9,10 @@ defmodule ConnectionCard.Router do
     plug :put_secure_browser_headers
   end
 
+  if Mix.env == :dev do
+    forward "/sent_emails", Bamboo.EmailPreviewPlug
+  end
+
   pipeline :api do
     plug :accepts, ["json"]
   end
