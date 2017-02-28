@@ -39,3 +39,5 @@ config :connection_card, ConnectionCard.Repo,
   database: "connection_card_dev",
   hostname: "localhost",
   pool_size: 10
+
+config :connection_card, ConnectionCard.Mailer, adapter: Bamboo.LocalAdapter

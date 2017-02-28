@@ -17,3 +17,5 @@ config :connection_card, ConnectionCard.Repo,
   pool: Ecto.Adapters.SQL.Sandbox
 
 config :hound, driver: "phantomjs", port: 8910
+
+config :connection_card, ConnectionCard.Mailer, adapter: Bamboo.TestAdapter
