@@ -11,7 +11,7 @@ defmodule ConnectionCard.Router do
     plug ConnectionCard.AttendeeSession
   end
 
-  if Mix.env == :dev do
+  if Mix.env == :dev  || Mix.env == :test do
     forward "/sent_emails", Bamboo.EmailPreviewPlug
   end
 

@@ -42,4 +42,57 @@ defmodule ConnectionCard.Feature.AttendeeTest do
     email |> ConnectionCard.Mailer.deliver_now
     assert_delivered_email ConnectionCard.AttendeeEmail.thank_you_email(attendee)
   end
+
+  test "attendee gets email if registering again" do
+    attendee = insert(:attendee)
+    token = Phoenix.Token.sign(ConnectionCard.Endpoint, "attendee", attendee.email)
+
+    navigate_to "/"
+    fill_in "attendee", :name, with: attendee.name
+    fill_in "attendee", :email, with: attendee.email
+    fill_in "attendee", :city, with: attendee.city
+    fill_in "attendee", :state, with: attendee.state
+    select "10:30", from: "service"
+    select "Adult", from: "age_range"
+    select "Member", from: "membership_status"
+    submit()
+
+    email = ConnectionCard.AttendeeEmail.tokenized_email(attendee, token)
+    email |> ConnectionCard.Mailer.deliver_now
+
+    assert visible_page_text() =~ "Hey! Looks like you've been here before."
+    assert_delivered_email email
+  end
+
+  test "attendee can use alternate form to recieve email" do
+    attendee = insert(:attendee)
+    token = Phoenix.Token.sign(ConnectionCard.Endpoint, "attendee", attendee.email)
+
+    navigate_to "/"
+    fill_in "attendee", :email, with: attendee.email
+    click_on "Send me a link!"
+
+    email = ConnectionCard.AttendeeEmail.tokenized_email(attendee, token)
+    email |> ConnectionCard.Mailer.deliver_now
+
+    assert visible_page_text() =~ "Email sent!"
+    assert_delivered_email email
+  end
+
+  test "attendee can sign in with link" do
+    attendee = insert(:attendee)
+    token = Phoenix.Token.sign(ConnectionCard.Endpoint, "attendee", attendee.email)
+
+    navigate_to "/"
+    fill_in "attendee", :email, with: attendee.email
+    click_on "Send me a link!"
+
+    email = ConnectionCard.AttendeeEmail.tokenized_email(attendee, token)
+    email |> ConnectionCard.Mailer.deliver_now
+
+    navigate_to "/attendees/#{attendee.id}?token=#{token}"
+
+    #assert visible_page_text() =~ "Hello, #{attendee.name}"
+    assert_delivered_email email
+  end
 end
