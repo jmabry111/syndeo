@@ -7,6 +7,11 @@ defmodule ConnectionCard.Router do
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug ConnectionCard.TokenVerifier
+    plug ConnectionCard.AttendeeSession
+    if Mix.env == :test do
+      plug ConnectionCard.SessionBackdoor
+    end
   end
 
   if Mix.env == :dev do
@@ -16,13 +21,18 @@ defmodule ConnectionCard.Router do
   pipeline :api do
     plug :accepts, ["json"]
   end
+  scope "/", ConnectionCard do
+    pipe_through [:browser]
+    resources "/attendees", AttendeeController, only: [:new, :create]
+    get "/", AttendeeController, :new
+    resources "/tokenized_email", TokenizedEmailController, only: [:create]
+  end
 
   scope "/", ConnectionCard do
-    pipe_through :browser # Use the default browser stack
-
-    get "/", PageController, :index
-    resources "/attendees", AttendeeController do
-      resources "/weekly_info", WeeklyInfoController
+    pipe_through [:browser, ConnectionCard.RequireAttendee]
+    resources "/attendees", AttendeeController, only: [:show]
+    resources "/attendees", AttendeeController, only: [] do
+      resources "/weekly_info", WeeklyInfoController, only: [:new, :create]
     end
   end
 

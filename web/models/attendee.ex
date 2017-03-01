@@ -21,13 +21,35 @@ defmodule ConnectionCard.Attendee do
     timestamps()
   end
 
+  defp required_fields do
+    [
+      :service,
+      :name,
+      :city,
+      :state,
+      :email,
+      :membership_status,
+      :age_range,
+    ]
+  end
+
+  defp optional_fields do
+    [
+      :street,
+      :sms,
+      :phone,
+    ]
+  end
+
   @doc """
   Builds a changeset based on the `struct` and `params`.
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:service, :name, :street, :city, :state, :zip, :email, :phone, :sms, :membership_status, :age_range])
-    |> validate_required([:service, :name, :street, :city, :state, :zip, :email, :phone, :sms, :membership_status, :age_range])
+    |> cast(params, required_fields() ++ optional_fields())
+    |> unique_constraint(:email)
+    |> validate_format(:email, ~r/.+@.+/)
+    |> validate_required(required_fields())
   end
 
   def services do
