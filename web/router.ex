@@ -9,9 +9,6 @@ defmodule ConnectionCard.Router do
     plug :put_secure_browser_headers
     plug ConnectionCard.TokenVerifier
     plug ConnectionCard.AttendeeSession
-    if Mix.env == :test do
-      plug ConnectionCard.SessionBackdoor
-    end
   end
 
   if Mix.env == :dev do
