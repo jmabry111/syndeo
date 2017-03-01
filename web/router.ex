@@ -32,7 +32,7 @@ defmodule ConnectionCard.Router do
     pipe_through [:browser, ConnectionCard.RequireAttendee]
     resources "/attendees", AttendeeController, only: [:show]
     resources "/attendees", AttendeeController, only: [] do
-      resources "/weekly_info", WeeklyInfoController, only: [:new, :create]
+      resources "/weekly_info", WeeklyInfoController, only: [:new, :create, :index, :delete]
     end
   end
 

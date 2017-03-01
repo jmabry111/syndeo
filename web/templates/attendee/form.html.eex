@@ -2,56 +2,56 @@
   <%= render ConnectionCard.FormView, "_form_errors.html", changeset: @changeset, form: f %>
 
   <div class="form-group row">
-    <div class="col-sm-8">
+    <div class="col-sm-12">
       <%= select(f, :service, ConnectionCard.Attendee.services, prompt: "Service Time", class: "form-control") %>
     </div>
   </div>
 
   <div class="form-group row">
-    <div class="col-sm-8">
+    <div class="col-sm-12">
       <%= input f, :name, class: "form-control", label: false, placeholder: "Name" %>
     </div>
   </div>
   
   <div class="form-group row">
-    <div class="col-sm-4">
+    <div class="col-sm-6">
       <%= input f, :email, class: "form-control", label: false, placeholder: "Email" %>
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-6">
       <%= select(f, :age_range, ConnectionCard.Attendee.age_ranges, prompt: "Age Group", class: "form-control") %>
     </div>
   </div>
   <div class="form-group row">
-    <div class="col-sm-4">
+    <div class="col-sm-6">
       <%= input f, :phone, class: "form-control", label: false, placeholder: "Phone" %>
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-6">
       <%= checkbox(f, :sms) %>
       <%= label f, :sms, gettext("Texts ok?") %>
     </div>
   </div>
 
   <div class="form-group row">
-    <div class="col-sm-8">
+    <div class="col-sm-12">
       <%= label f, :street, "Address" %>
       <%= input f, :street, class: "form-control", label: false, placeholder: "Street" %>
     </div>
   </div>
 
   <div class="form-group row">
-    <div class="col-sm-4">
+    <div class="col-sm-6">
       <%= input f, :city, class: "form-control", label: false, placeholder: "City" %>
     </div>
-    <div class="col-sm-2">
+    <div class="col-sm-3">
       <%= input f, :state, class: "form-control", label: false, placeholder: "State" %>
     </div>
-    <div class="col-sm-2">
+    <div class="col-sm-3">
       <%= input f, :zip, class: "form-control", label: false, placeholder: "Zip", pattern: "[0-9]*" %>
     </div>
   </div>
 
   <div class="form-group row">
-    <div class="col-sm-8">
+    <div class="col-sm-12">
       <%= select(f, :membership_status, ConnectionCard.Attendee.membership_status, prompt: "Membership Status", class: "form-control") %>
     </div>
   </div>

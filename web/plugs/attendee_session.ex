@@ -27,7 +27,7 @@ defmodule ConnectionCard.AttendeeSession do
   def login_attendee(conn, %Attendee{}=attendee) do
     attendee =
       attendee
-      |> Repo.preload([:weekly_info], force: true)
+      |> Repo.preload([:weekly_info])
     conn
     |> assign(:current_attendee, attendee)
     |> put_session(:current_attendee, attendee.id)

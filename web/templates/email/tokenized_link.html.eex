@@ -2,4 +2,4 @@
 
 <p>Thanks for coming back to fill out another connection card.</p>
 <p>Please click the link below to sign in and fill out your info for this week.</p>
-<%= link gettext("Connect with us"), to: attendee_weekly_info_url(ConnectionCard.Endpoint, :new, @attendee, token: @token) %>
+<%= link gettext("Connect with us"), to: attendee_url(ConnectionCard.Endpoint, :show, @attendee, token: @token) %>
