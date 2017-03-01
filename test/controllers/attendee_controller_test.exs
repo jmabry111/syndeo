@@ -6,6 +6,6 @@ defmodule ConnectionCard.AttendeeControllerTest do
 
     conn = post conn, path, attendee: %{"name" => ""}
 
-    assert html_response(conn, 200) =~ "New attendee"
+    assert html_response(conn, 200) =~ "First time connecting online?"
   end
 end

@@ -6,7 +6,7 @@ defmodule ConnectionCard.AttendeeTest do
   @valid_attrs %{
     age_range: "some content", 
     city: "some content", 
-    email: "some content", 
+    email: "some@content.com", 
     membership_status: "some content", 
     name: "some content", 
     phone: "some content", 
