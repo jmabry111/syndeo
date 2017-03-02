@@ -81,7 +81,7 @@ defmodule ConnectionCard.Feature.AttendeeTest do
 
   test "attendee can sign in with link" do
     attendee = insert(:attendee)
-    token = Phoenix.Token.sign(ConnectionCard.Endpoint, "attendee", attendee.email)
+    token = Phoenix.Token.sign(ConnectionCard.Endpoint, "attendee", attendee.id)
 
     navigate_to "/"
     fill_in_with_id "return-attendee", with: attendee.email

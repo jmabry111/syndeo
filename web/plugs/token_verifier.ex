@@ -4,7 +4,7 @@ defmodule ConnectionCard.TokenVerifier do
 
   def init(default), do: default
 
-  def call(%{params: %{"token" => token}} = conn, _default) do
+  def call(%{query_params: %{"token" => token}} = conn, _default) do
     case AttendeeSession.verify_token(token) do
       {:ok, attendee_id} ->
         conn
