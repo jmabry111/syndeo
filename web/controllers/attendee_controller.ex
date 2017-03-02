@@ -1,7 +1,9 @@
 defmodule ConnectionCard.AttendeeController do
   use ConnectionCard.Web, :controller
+  alias ConnectionCard.AttendeeSession
   alias ConnectionCard.Attendee
   alias ConnectionCard.AttendeeEmail
+  alias ConnectionCard.TokenizedEmail
   alias ConnectionCard.Mailer
 
   def index(conn, _params) do
@@ -24,16 +26,29 @@ defmodule ConnectionCard.AttendeeController do
         |> Mailer.deliver_later
 
         conn
+        |> AttendeeSession.login_attendee(attendee)
         |> put_flash(:info, "Attendee created successfully.")
         |> redirect(to: attendee_weekly_info_path(conn, :index, attendee))
       {:error, changeset} ->
-        render(conn, "new.html", changeset: changeset)
+        if email_taken?(changeset) do
+          TokenizedEmail.send_tokenized_email(changeset.changes[:email])
+          conn
+          |> put_flash(:error, gettext("Hey! Looks like you've been here before. :) Please check your email for a link to sign in and fill in your info for this week."))
+          |> redirect(to: "/attendees/new")
+        else
+          conn
+          |> assign(:changeset, changeset)
+          |> render(:new)
+        end
     end
   end
 
-  def show(conn, %{"id" => id}) do
-    attendee = Repo.get!(Attendee, id)
-    render(conn, "show.html", attendee: attendee)
+  def show(conn, %{"id" => _id}) do
+    attendee = conn.assigns[:current_attendee]
+    conn
+    |> assign(:weekly_info, attendee.weekly_info)
+    |> assign(:attendee, attendee)
+    |> render(:show)
   end
 
   def edit(conn, %{"id" => id}) do
@@ -66,5 +81,9 @@ defmodule ConnectionCard.AttendeeController do
     conn
     |> put_flash(:info, "Attendee deleted successfully.")
     |> redirect(to: attendee_path(conn, :index))
+  end
+
+  defp email_taken?(changeset) do
+    {:email, {"has already been taken", []}} in changeset.errors
   end
 end

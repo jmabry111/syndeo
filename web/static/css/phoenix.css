@@ -31,8 +31,10 @@ form.link, form.button {
   height: 71px;
   display: inline-block;
   margin-bottom: 1em;
-  background-image: url("/images/phoenix.png");
-  background-size: 519px 71px;
+  background-image: url("/images/smcc.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 250px 71px;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */

@@ -46,6 +46,10 @@ defmodule ConnectionCard.FeatureHelpers do
     fill_field({:name, "#{type}[#{field_name}]"}, text)
   end
 
+  def fill_in_with_id(field_id, [with: text]) do
+    fill_field({:id, "#{field_id}"}, text)
+  end
+
   def flash_text do
     text_for_role("flash")
   end

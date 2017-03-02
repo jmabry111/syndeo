@@ -9,6 +9,14 @@ defmodule ConnectionCard.AttendeeEmail do
     |> render(:thank_you, attendee: attendee)
   end
 
+  def tokenized_email(attendee, token) do
+    base_email()
+    |> to(attendee.email)
+    |> subject("Fill out another card")
+    |> put_layout({ConnectionCard.LayoutView, :email})
+    |> render(:tokenized_link, attendee: attendee, token: token)
+  end
+
   def base_email do
     new_email()
     |> from("noreply@example.com")
