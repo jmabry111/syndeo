@@ -7,7 +7,8 @@ config :connection_card, ConnectionCard.Endpoint,
   server: true
 
 # Print only warnings and errors during test
-config :logger, level: :warn
+config :logger, :console, format: "[$level] $message\n"
+# config :logger, level: :warn
 
 # Configure your database
 config :connection_card, ConnectionCard.Repo,

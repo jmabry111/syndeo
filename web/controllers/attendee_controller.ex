@@ -43,9 +43,12 @@ defmodule ConnectionCard.AttendeeController do
     end
   end
 
-  def show(conn, %{"id" => id}) do
-    attendee = Repo.get!(Attendee, id)
-    render(conn, "show.html", attendee: attendee)
+  def show(conn, %{"id" => _id}) do
+    attendee = conn.assigns[:current_attendee]
+    conn
+    |> assign(:weekly_info, attendee.weekly_info)
+    |> assign(:attendee, attendee)
+    |> render(:show)
   end
 
   def edit(conn, %{"id" => id}) do

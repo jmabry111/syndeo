@@ -2,6 +2,7 @@ defmodule ConnectionCard.Feature.AttendeeTest do
   use ConnectionCard.FeatureCase
   use Bamboo.Test, shared: :true
   alias ConnectionCard.Attendee
+  alias ConnectionCard.Mailer
 
   test "create an attendee" do
     navigate_to "/attendees/new"
@@ -84,15 +85,16 @@ defmodule ConnectionCard.Feature.AttendeeTest do
     token = Phoenix.Token.sign(ConnectionCard.Endpoint, "attendee", attendee.email)
 
     navigate_to "/"
-    fill_in "attendee", :email, with: attendee.email
+    fill_in_with_id "return-attendee", with: attendee.email
     click_on "Send me a link!"
 
     email = ConnectionCard.AttendeeEmail.tokenized_email(attendee, token)
     email |> ConnectionCard.Mailer.deliver_now
 
-    navigate_to "/attendees/#{attendee.id}?token=#{token}"
-
-    #assert visible_page_text() =~ "Hello, #{attendee.name}"
+    assert visible_page_text() =~ "Email sent!"
     assert_delivered_email email
+
+    navigate_to "/attendees/#{attendee.id}?token=#{token}"
+    assert visible_page_text() =~ "Hello, #{attendee.name}"
   end
 end
