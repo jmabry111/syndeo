@@ -2,7 +2,6 @@ defmodule ConnectionCard.Feature.AttendeeTest do
   use ConnectionCard.FeatureCase
   use Bamboo.Test, shared: :true
   alias ConnectionCard.Attendee
-  alias ConnectionCard.Mailer
 
   test "create an attendee" do
     navigate_to "/attendees/new"
