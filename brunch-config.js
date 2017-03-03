@@ -64,6 +64,8 @@ exports.config = {
   },
 
   npm: {
-    enabled: true
-  }
+    enabled: true,
+    styles: {pikaday: ['css/pikaday.css']},
+    globals: {Pikaday: "pikaday"},
+  },
 };

@@ -1,27 +1,10 @@
 <%= form_for @changeset, attendee_weekly_info_path(@conn, :create, @attendee), fn f -> %>
   <%= render Syndeo.FormView, "_form_errors.html", changeset: @changeset, form: f %>
-
-    <%= date_select f,
-      :week_date, 
-      default: {Ecto.Date.utc.year, Ecto.Date.utc.month, Ecto.Date.utc.day}, builder: fn builder-> %>
-
     <div class="form-group row">
       <div class="col-sm-8">
-        <%= label f, :week_date, "Week of" %>
+        <%= input f, :week_date, class: "form-control", label: false, placeholder: "Sunday's Date", id: "datepicker" %>
       </div>
     </div>
-    <div class="form-group row">
-      <div class="col-sm-3">
-        <%= builder.(:month, [class: "form-control"]) %>
-      </div>
-      <div class="col-sm-2">
-        <%= builder.(:day, [class: "form-control"]) %>
-      </div>
-      <div class="col-sm-3">
-        <%= builder.(:year, [class: "form-control"]) %>
-      </div>
-    </div>
-  <% end %>
 
   <div class="form-group row">
     <div class="col-sm-8">

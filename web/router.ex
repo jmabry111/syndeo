@@ -23,6 +23,7 @@ defmodule Syndeo.Router do
     resources "/attendees", AttendeeController, only: [:new, :create]
     get "/", AttendeeController, :new
     resources "/tokenized_email", TokenizedEmailController, only: [:create]
+    resources "/meals", MealController
   end
 
   scope "/", Syndeo do

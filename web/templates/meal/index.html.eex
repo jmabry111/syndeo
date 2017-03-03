@@ -1,0 +1,33 @@
+<h2>Listing meals</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th>Date</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for meal <- @meals do %>
+    <tr>
+      <td><%= meal.description %></td>
+      <td>
+          <%= Timex.format!(
+              meal.date,
+              "%m-%d-%Y",
+              :strftime
+          ) %>
+      </td>
+      <td class="text-right">
+        <%= link "Show", to: meal_path(@conn, :show, meal), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: meal_path(@conn, :edit, meal), class: "btn btn-default btn-xs" %>
+        <%= link "Delete", to: meal_path(@conn, :delete, meal), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= link "New meal", to: meal_path(@conn, :new) %>
