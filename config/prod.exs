@@ -16,5 +16,6 @@ config :syndeo, Syndeo.Repo,
   ssl: true
 
 config :syndeo, Syndeo.Mailer,
-  adapter: Bamboo.SendgridAdapter,
-  api_key: System.get_env("SENDGRID_API_KEY")
+  adapter: Bamboo.MailgunAdapter,
+  mailgun_domain: System.get_env("MAILGUN_DOMAIN")
+  mailgun_key: System.get_env("MAILGUN_API_KEY")
