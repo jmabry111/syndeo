@@ -18,6 +18,7 @@
           <ul class="nav nav-pills pull-right">
             <%= if @conn.assigns[:current_attendee] do %>
               <li>Welcome, <%= @current_attendee.name %>!</li>
+              <li><%= link "Connect", to: attendee_weekly_info_path(@conn, :index, @current_attendee.id), class: "btn btn-xs btn-default" %></li>
             <% end %>
           </ul>
         </nav>

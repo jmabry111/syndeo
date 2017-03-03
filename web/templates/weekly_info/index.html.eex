@@ -1,4 +1,4 @@
-<h2>Weekly info for <%= @attendee.name %></h2>
+<h2>Connection Card for <%= @attendee.name %></h2>
 
 <%= render "form.html", changeset: @changeset, conn: @conn, attendee: @attendee %>
 
@@ -16,7 +16,13 @@
     <tbody>
   <%= for weekly_info <- @weekly_info do %>
       <tr>
-        <td><%= weekly_info.week_date %></td>
+        <td>
+          <%= Timex.format!(
+              weekly_info.week_date,
+              "%m-%d-%Y",
+              :strftime
+          ) %>
+        </td>
         <td><%= weekly_info.attending_meal %></td>
 
         <td class="text-right">

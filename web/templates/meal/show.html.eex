@@ -1,0 +1,18 @@
+<h2>Show meal</h2>
+
+<ul>
+
+  <li>
+    <strong>Description:</strong>
+    <%= @meal.description %>
+  </li>
+
+  <li>
+    <strong>Date:</strong>
+    <%= @meal.date %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: meal_path(@conn, :edit, @meal) %>
+<%= link "Back", to: meal_path(@conn, :index) %>

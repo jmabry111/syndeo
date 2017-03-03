@@ -8,7 +8,7 @@
     ) %>
   </div>
 
-  <div class="col-sm-5">
+  <div class="col-sm-5 sidebar">
     <h3>Already registered?</h3>
     <p>Just enter your email here and we'll email you a sign in link to fill out your info for this week.</p>
     <%= form_for @conn, tokenized_email_path(@conn, :create), [as: :attendee], fn form -> %>
