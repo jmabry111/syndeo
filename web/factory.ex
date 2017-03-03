@@ -1,8 +1,8 @@
-defmodule ConnectionCard.Factory do
-  use ExMachina.Ecto, repo: ConnectionCard.Repo
+defmodule Syndeo.Factory do
+  use ExMachina.Ecto, repo: Syndeo.Repo
 
   def attendee_factory do
-    %ConnectionCard.Attendee{
+    %Syndeo.Attendee{
       service: "9:00",
       name: sequence(:name, &"John P Churchgoer#{&1}"),
       street: sequence(:street, &"#{&1} Cherub Ave"),
@@ -18,7 +18,7 @@ defmodule ConnectionCard.Factory do
   end
 
   def weekly_info_factory do
-    %ConnectionCard.WeeklyInfo{
+    %Syndeo.WeeklyInfo{
       week_date: Timex.today,
       attending_meal: true,
       num_kids: 2,
@@ -36,6 +36,6 @@ defmodule ConnectionCard.Factory do
     module_name
     |> struct(%{})
     |> module_name.changeset(params)
-    |> ConnectionCard.Repo.insert!
+    |> Syndeo.Repo.insert!
   end
 end

@@ -1,3 +1,3 @@
-defmodule ConnectionCard.WeeklyInfoView do
-  use ConnectionCard.Web, :view
+defmodule Syndeo.WeeklyInfoView do
+  use Syndeo.Web, :view
 end

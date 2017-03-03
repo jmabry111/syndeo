@@ -1,4 +1,4 @@
-defmodule ConnectionCard.Repo.Migrations.CreateWeeklyInfo do
+defmodule Syndeo.Repo.Migrations.CreateWeeklyInfo do
   use Ecto.Migration
 
   def change do

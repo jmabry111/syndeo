@@ -1,4 +1,4 @@
-defmodule ConnectionCard.ChannelCase do
+defmodule Syndeo.ChannelCase do
   @moduledoc """
   This module defines the test case to be used by
   channel tests.
@@ -20,22 +20,22 @@ defmodule ConnectionCard.ChannelCase do
       # Import conveniences for testing with channels
       use Phoenix.ChannelTest
 
-      alias ConnectionCard.Repo
+      alias Syndeo.Repo
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
 
 
       # The default endpoint for testing
-      @endpoint ConnectionCard.Endpoint
+      @endpoint Syndeo.Endpoint
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(ConnectionCard.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Syndeo.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(ConnectionCard.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(Syndeo.Repo, {:shared, self()})
     end
 
     :ok

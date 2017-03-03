@@ -1,7 +1,7 @@
-defmodule ConnectionCard.Plug.SessionBackdoor do
-  alias ConnectionCard.Repo
-  alias ConnectionCard.Attendee
-  import ConnectionCard.AttendeeSession, only: [login_attendee: 2]
+defmodule Syndeo.Plug.SessionBackdoor do
+  alias Syndeo.Repo
+  alias Syndeo.Attendee
+  import Syndeo.AttendeeSession, only: [login_attendee: 2]
 
   def init(default), do: default
 

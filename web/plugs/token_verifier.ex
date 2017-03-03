@@ -1,6 +1,6 @@
-defmodule ConnectionCard.TokenVerifier do
+defmodule Syndeo.TokenVerifier do
   import Phoenix.Controller
-  alias ConnectionCard.AttendeeSession
+  alias Syndeo.AttendeeSession
 
   def init(default), do: default
 

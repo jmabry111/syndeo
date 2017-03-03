@@ -1,3 +1,3 @@
-defmodule ConnectionCard.Repo do
-  use Ecto.Repo, otp_app: :connection_card
+defmodule Syndeo.Repo do
+  use Ecto.Repo, otp_app: :syndeo
 end

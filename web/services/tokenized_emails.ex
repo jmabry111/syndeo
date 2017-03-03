@@ -1,10 +1,10 @@
-defmodule ConnectionCard.TokenizedEmail do
-  alias ConnectionCard.Attendee
-  alias ConnectionCard.AttendeeSession
-  alias ConnectionCard.Repo
+defmodule Syndeo.TokenizedEmail do
+  alias Syndeo.Attendee
+  alias Syndeo.AttendeeSession
+  alias Syndeo.Repo
   import Ecto.Query
-  alias ConnectionCard.AttendeeEmail
-  alias ConnectionCard.Mailer
+  alias Syndeo.AttendeeEmail
+  alias Syndeo.Mailer
 
   def send_tokenized_email(email) do
     attendee = Attendee |> where(email: ^email) |> Repo.one

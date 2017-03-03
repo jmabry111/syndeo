@@ -1,6 +1,6 @@
-defmodule ConnectionCard.WeeklyInfoTest do
-  use ConnectionCard.ModelCase
-  alias ConnectionCard.WeeklyInfo
+defmodule Syndeo.WeeklyInfoTest do
+  use Syndeo.ModelCase
+  alias Syndeo.WeeklyInfo
 
   @valid_attrs %{
     attendee_id: "1",

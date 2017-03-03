@@ -1,6 +1,6 @@
-defmodule ConnectionCard.FeatureHelpers do
+defmodule Syndeo.FeatureHelpers do
   use Hound.Helpers
-  import ConnectionCard.RoleHelpers
+  import Syndeo.RoleHelpers
 
   def click_on(text) do
     text

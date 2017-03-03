@@ -1,8 +1,8 @@
-defmodule ConnectionCard.Repo.Migrations.ChangeAttendeeToUuid do
+defmodule Syndeo.Repo.Migrations.ChangeAttendeeToUuid do
   use Ecto.Migration
 
   def change do
-    Ecto.Adapters.SQL.query(ConnectionCard.Repo, "TRUNCATE TABLE attendees CASCADE")
+    Ecto.Adapters.SQL.query(Syndeo.Repo, "TRUNCATE TABLE attendees CASCADE")
 
     alter table(:attendees) do
       remove :id

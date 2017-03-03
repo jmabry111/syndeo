@@ -1,3 +1,3 @@
-defmodule ConnectionCard.Mailer do
-  use Bamboo.Mailer, otp_app: :connection_card
+defmodule Syndeo.Mailer do
+  use Bamboo.Mailer, otp_app: :syndeo
 end

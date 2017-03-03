@@ -1,14 +1,14 @@
-defmodule ConnectionCard.Endpoint do
-  use Phoenix.Endpoint, otp_app: :connection_card
+defmodule Syndeo.Endpoint do
+  use Phoenix.Endpoint, otp_app: :syndeo
 
-  socket "/socket", ConnectionCard.UserSocket
+  socket "/socket", Syndeo.UserSocket
 
   # Serve at "/" the static files from "priv/static" directory.
   #
   # You should set gzip to true if you are running phoenix.digest
   # when deploying your static files in production.
   plug Plug.Static,
-    at: "/", from: :connection_card, gzip: false,
+    at: "/", from: :syndeo, gzip: false,
     only: ~w(css fonts images js favicon.ico robots.txt)
 
   # Code reloading can be explicitly enabled under the
@@ -35,8 +35,8 @@ defmodule ConnectionCard.Endpoint do
   # Set :encryption_salt if you would also like to encrypt it.
   plug Plug.Session,
     store: :cookie,
-    key: "_connection_card_key",
+    key: "_syndeo_key",
     signing_salt: "JgvM7oik"
 
-  plug ConnectionCard.Router
+  plug Syndeo.Router
 end

@@ -1,4 +1,4 @@
-defmodule ConnectionCard.ModelCase do
+defmodule Syndeo.ModelCase do
   @moduledoc """
   This module defines the test case to be used by
   model tests.
@@ -16,21 +16,21 @@ defmodule ConnectionCard.ModelCase do
 
   using do
     quote do
-      alias ConnectionCard.Repo
+      alias Syndeo.Repo
 
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
-      import ConnectionCard.ModelCase
-      import ConnectionCard.Factory
+      import Syndeo.ModelCase
+      import Syndeo.Factory
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(ConnectionCard.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Syndeo.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(ConnectionCard.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(Syndeo.Repo, {:shared, self()})
     end
 
     :ok
@@ -60,7 +60,7 @@ defmodule ConnectionCard.ModelCase do
   """
   def errors_on(struct, data) do
     struct.__struct__.changeset(struct, data)
-    |> Ecto.Changeset.traverse_errors(&ConnectionCard.ErrorHelpers.translate_error/1)
+    |> Ecto.Changeset.traverse_errors(&Syndeo.ErrorHelpers.translate_error/1)
     |> Enum.flat_map(fn {key, errors} -> for msg <- errors, do: {key, msg} end)
   end
 end
