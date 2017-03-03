@@ -1,6 +1,6 @@
 defmodule Mix.Tasks.DevelopmentSeeds do
   use Mix.Task
-  alias ConnectionCard.Repo
+  alias Syndeo.Repo
 
   @doc "insert dev data"
   def run(_args) do

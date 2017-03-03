@@ -1,11 +1,11 @@
-defmodule ConnectionCard.AttendeeEmail do
-  use Bamboo.Phoenix, view: ConnectionCard.EmailView
+defmodule Syndeo.AttendeeEmail do
+  use Bamboo.Phoenix, view: Syndeo.EmailView
 
   def thank_you_email(attendee) do
     base_email()
     |> to(attendee.email)
     |> subject("Thank you!")
-    |> put_layout({ConnectionCard.LayoutView, :email})
+    |> put_layout({Syndeo.LayoutView, :email})
     |> render(:thank_you, attendee: attendee)
   end
 
@@ -13,7 +13,7 @@ defmodule ConnectionCard.AttendeeEmail do
     base_email()
     |> to(attendee.email)
     |> subject("Fill out another card")
-    |> put_layout({ConnectionCard.LayoutView, :email})
+    |> put_layout({Syndeo.LayoutView, :email})
     |> render(:tokenized_link, attendee: attendee, token: token)
   end
 

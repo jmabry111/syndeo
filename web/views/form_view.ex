@@ -1,3 +1,3 @@
-defmodule ConnectionCard.FormView do
-  use ConnectionCard.Web, :view
+defmodule Syndeo.FormView do
+  use Syndeo.Web, :view
 end

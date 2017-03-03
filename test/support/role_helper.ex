@@ -1,4 +1,4 @@
-defmodule ConnectionCard.RoleHelpers do
+defmodule Syndeo.RoleHelpers do
   use Hound.Helpers
 
   def click_role(name) do

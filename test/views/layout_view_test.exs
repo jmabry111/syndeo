@@ -1,3 +1,3 @@
-defmodule ConnectionCard.LayoutViewTest do
-  use ConnectionCard.ConnCase, async: true
+defmodule Syndeo.LayoutViewTest do
+  use Syndeo.ConnCase, async: true
 end

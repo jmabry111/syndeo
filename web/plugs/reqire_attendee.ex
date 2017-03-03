@@ -1,4 +1,4 @@
-defmodule ConnectionCard.RequireAttendee do
+defmodule Syndeo.RequireAttendee do
   import Plug.Conn
   import Phoenix.Controller, only: [put_flash: 3, redirect: 2]
 

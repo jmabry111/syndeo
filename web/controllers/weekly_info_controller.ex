@@ -1,8 +1,8 @@
-defmodule ConnectionCard.WeeklyInfoController do
-  use ConnectionCard.Web, :controller
-  alias ConnectionCard.WeeklyInfo
-  alias ConnectionCard.Attendee
-  import ConnectionCard.AttendeeQuery
+defmodule Syndeo.WeeklyInfoController do
+  use Syndeo.Web, :controller
+  alias Syndeo.WeeklyInfo
+  alias Syndeo.Attendee
+  import Syndeo.AttendeeQuery
 
   def index(conn, %{"attendee_id" => attendee_id}) do
     attendee = find_attendee!(attendee_id)

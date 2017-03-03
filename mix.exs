@@ -1,8 +1,8 @@
-defmodule ConnectionCard.Mixfile do
+defmodule Syndeo.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :connection_card,
+    [app: :syndeo,
      version: "0.0.1",
      elixir: "~> 1.2",
      elixirc_paths: elixirc_paths(Mix.env),
@@ -17,7 +17,7 @@ defmodule ConnectionCard.Mixfile do
   #
   # Type `mix help compile.app` for more information.
   def application do
-    [mod: {ConnectionCard, []},
+    [mod: {Syndeo, []},
      applications: [
        :bamboo,
        :cowboy,

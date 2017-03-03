@@ -1,5 +1,5 @@
-defmodule ConnectionCard.AttendeeControllerTest do
-  use ConnectionCard.ConnCase
+defmodule Syndeo.AttendeeControllerTest do
+  use Syndeo.ConnCase
 
   test "does not create resource and renders errors when data is invalid", %{conn: conn} do
     path = attendee_path(conn, :create)

@@ -1,5 +1,5 @@
-defmodule ConnectionCard.Attendee do
-  use ConnectionCard.Web, :model
+defmodule Syndeo.Attendee do
+  use Syndeo.Web, :model
   use Timex.Ecto.Timestamps
 
   @primary_key {:id, :binary_id, autogenerate: true}
@@ -16,7 +16,7 @@ defmodule ConnectionCard.Attendee do
     field :membership_status, :string
     field :age_range, :string
 
-    has_many :weekly_info, ConnectionCard.WeeklyInfo, on_delete: :delete_all
+    has_many :weekly_info, Syndeo.WeeklyInfo, on_delete: :delete_all
 
     timestamps()
   end

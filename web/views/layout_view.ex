@@ -1,3 +1,3 @@
-defmodule ConnectionCard.LayoutView do
-  use ConnectionCard.Web, :view
+defmodule Syndeo.LayoutView do
+  use Syndeo.Web, :view
 end

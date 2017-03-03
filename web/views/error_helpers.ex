@@ -1,4 +1,4 @@
-defmodule ConnectionCard.ErrorHelpers do
+defmodule Syndeo.ErrorHelpers do
   @moduledoc """
   Conveniences for translating and building error messages.
   """
@@ -32,9 +32,9 @@ defmodule ConnectionCard.ErrorHelpers do
     #     dgettext "errors", "is invalid"
     #
     if count = opts[:count] do
-      Gettext.dngettext(ConnectionCard.Gettext, "errors", msg, msg, count, opts)
+      Gettext.dngettext(Syndeo.Gettext, "errors", msg, msg, count, opts)
     else
-      Gettext.dgettext(ConnectionCard.Gettext, "errors", msg, opts)
+      Gettext.dgettext(Syndeo.Gettext, "errors", msg, opts)
     end
   end
 end

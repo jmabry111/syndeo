@@ -1,11 +1,11 @@
-defmodule ConnectionCard.Gettext do
+defmodule Syndeo.Gettext do
   @moduledoc """
   A module providing Internationalization with a gettext-based API.
 
   By using [Gettext](https://hexdocs.pm/gettext),
   your module gains a set of macros for translations, for example:
 
-      import ConnectionCard.Gettext
+      import Syndeo.Gettext
 
       # Simple translation
       gettext "Here is the string to translate"
@@ -20,5 +20,5 @@ defmodule ConnectionCard.Gettext do
 
   See the [Gettext Docs](https://hexdocs.pm/gettext) for detailed usage.
   """
-  use Gettext, otp_app: :connection_card
+  use Gettext, otp_app: :syndeo
 end

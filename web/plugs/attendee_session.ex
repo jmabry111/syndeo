@@ -1,8 +1,8 @@
-defmodule ConnectionCard.AttendeeSession do
+defmodule Syndeo.AttendeeSession do
   import Plug.Conn
-  alias ConnectionCard.Attendee
-  alias ConnectionCard.Endpoint
-  alias ConnectionCard.Repo
+  alias Syndeo.Attendee
+  alias Syndeo.Endpoint
+  alias Syndeo.Repo
   alias Phoenix.Token
   @twenty_four_hours 86400
 

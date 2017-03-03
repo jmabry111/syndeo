@@ -1,4 +1,4 @@
-defmodule ConnectionCard.ConnCase do
+defmodule Syndeo.ConnCase do
   @moduledoc """
   This module defines the test case to be used by
   tests that require setting up a connection.
@@ -20,24 +20,24 @@ defmodule ConnectionCard.ConnCase do
       # Import conveniences for testing with connections
       use Phoenix.ConnTest
 
-      alias ConnectionCard.Repo
+      alias Syndeo.Repo
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
 
-      import ConnectionCard.Router.Helpers
-      import ConnectionCard.Factory
+      import Syndeo.Router.Helpers
+      import Syndeo.Factory
 
       # The default endpoint for testing
-      @endpoint ConnectionCard.Endpoint
+      @endpoint Syndeo.Endpoint
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(ConnectionCard.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Syndeo.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(ConnectionCard.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(Syndeo.Repo, {:shared, self()})
     end
 
     {:ok, conn: Phoenix.ConnTest.build_conn()}

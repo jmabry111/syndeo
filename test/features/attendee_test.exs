@@ -1,7 +1,7 @@
-defmodule ConnectionCard.Feature.AttendeeTest do
-  use ConnectionCard.FeatureCase
+defmodule Syndeo.Feature.AttendeeTest do
+  use Syndeo.FeatureCase
   use Bamboo.Test, shared: :true
-  alias ConnectionCard.Attendee
+  alias Syndeo.Attendee
 
   test "create an attendee" do
     navigate_to "/attendees/new"
@@ -38,14 +38,14 @@ defmodule ConnectionCard.Feature.AttendeeTest do
 
     attendee = Attendee |> Repo.one
 
-    email = ConnectionCard.AttendeeEmail.thank_you_email(attendee)
-    email |> ConnectionCard.Mailer.deliver_now
-    assert_delivered_email ConnectionCard.AttendeeEmail.thank_you_email(attendee)
+    email = Syndeo.AttendeeEmail.thank_you_email(attendee)
+    email |> Syndeo.Mailer.deliver_now
+    assert_delivered_email Syndeo.AttendeeEmail.thank_you_email(attendee)
   end
 
   test "attendee gets email if registering again" do
     attendee = insert(:attendee)
-    token = Phoenix.Token.sign(ConnectionCard.Endpoint, "attendee", attendee.email)
+    token = Phoenix.Token.sign(Syndeo.Endpoint, "attendee", attendee.email)
 
     navigate_to "/"
     fill_in "attendee", :name, with: attendee.name
@@ -57,8 +57,8 @@ defmodule ConnectionCard.Feature.AttendeeTest do
     select "Member", from: "membership_status"
     submit()
 
-    email = ConnectionCard.AttendeeEmail.tokenized_email(attendee, token)
-    email |> ConnectionCard.Mailer.deliver_now
+    email = Syndeo.AttendeeEmail.tokenized_email(attendee, token)
+    email |> Syndeo.Mailer.deliver_now
 
     assert visible_page_text() =~ "Hey! Looks like you've been here before."
     assert_delivered_email email
@@ -66,14 +66,14 @@ defmodule ConnectionCard.Feature.AttendeeTest do
 
   test "attendee can use alternate form to recieve email" do
     attendee = insert(:attendee)
-    token = Phoenix.Token.sign(ConnectionCard.Endpoint, "attendee", attendee.email)
+    token = Phoenix.Token.sign(Syndeo.Endpoint, "attendee", attendee.email)
 
     navigate_to "/"
     fill_in "attendee", :email, with: attendee.email
     click_on "Send me a link!"
 
-    email = ConnectionCard.AttendeeEmail.tokenized_email(attendee, token)
-    email |> ConnectionCard.Mailer.deliver_now
+    email = Syndeo.AttendeeEmail.tokenized_email(attendee, token)
+    email |> Syndeo.Mailer.deliver_now
 
     assert visible_page_text() =~ "Email sent!"
     assert_delivered_email email
@@ -81,14 +81,14 @@ defmodule ConnectionCard.Feature.AttendeeTest do
 
   test "attendee can sign in with link" do
     attendee = insert(:attendee)
-    token = Phoenix.Token.sign(ConnectionCard.Endpoint, "attendee", attendee.id)
+    token = Phoenix.Token.sign(Syndeo.Endpoint, "attendee", attendee.id)
 
     navigate_to "/"
     fill_in_with_id "return-attendee", with: attendee.email
     click_on "Send me a link!"
 
-    email = ConnectionCard.AttendeeEmail.tokenized_email(attendee, token)
-    email |> ConnectionCard.Mailer.deliver_now
+    email = Syndeo.AttendeeEmail.tokenized_email(attendee, token)
+    email |> Syndeo.Mailer.deliver_now
 
     assert visible_page_text() =~ "Email sent!"
     assert_delivered_email email

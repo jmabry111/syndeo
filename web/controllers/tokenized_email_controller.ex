@@ -1,6 +1,6 @@
-defmodule ConnectionCard.TokenizedEmailController do
-  use ConnectionCard.Web, :controller
-  alias ConnectionCard.TokenizedEmail
+defmodule Syndeo.TokenizedEmailController do
+  use Syndeo.Web, :controller
+  alias Syndeo.TokenizedEmail
 
   def create(conn, %{"attendee" => %{"email" => email}}) do
     TokenizedEmail.send_tokenized_email(email)

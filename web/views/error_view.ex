@@ -1,5 +1,5 @@
-defmodule ConnectionCard.ErrorView do
-  use ConnectionCard.Web, :view
+defmodule Syndeo.ErrorView do
+  use Syndeo.Web, :view
 
   def render("404.html", _assigns) do
     "Page not found"

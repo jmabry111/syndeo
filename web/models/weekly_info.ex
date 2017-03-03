@@ -1,5 +1,5 @@
-defmodule ConnectionCard.WeeklyInfo do
-  use ConnectionCard.Web, :model
+defmodule Syndeo.WeeklyInfo do
+  use Syndeo.Web, :model
 
   schema "weeklyinfo" do
     field :week_date, Timex.Ecto.Date
@@ -9,7 +9,7 @@ defmodule ConnectionCard.WeeklyInfo do
     field :num_adults, :integer
     field :prayers, :string
     field :contact, :string
-    belongs_to :attendee, ConnectionCard.Attendee, type: :binary_id
+    belongs_to :attendee, Syndeo.Attendee, type: :binary_id
 
     timestamps()
   end

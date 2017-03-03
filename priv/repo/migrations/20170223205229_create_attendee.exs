@@ -1,4 +1,4 @@
-defmodule ConnectionCard.Repo.Migrations.CreateAttendee do
+defmodule Syndeo.Repo.Migrations.CreateAttendee do
   use Ecto.Migration
 
   def change do

@@ -1,10 +1,10 @@
-defmodule ConnectionCard.AttendeeController do
-  use ConnectionCard.Web, :controller
-  alias ConnectionCard.AttendeeSession
-  alias ConnectionCard.Attendee
-  alias ConnectionCard.AttendeeEmail
-  alias ConnectionCard.TokenizedEmail
-  alias ConnectionCard.Mailer
+defmodule Syndeo.AttendeeController do
+  use Syndeo.Web, :controller
+  alias Syndeo.AttendeeSession
+  alias Syndeo.Attendee
+  alias Syndeo.AttendeeEmail
+  alias Syndeo.TokenizedEmail
+  alias Syndeo.Mailer
 
   def index(conn, _params) do
     attendees = Repo.all(Attendee)

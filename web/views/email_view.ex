@@ -1,3 +1,3 @@
-defmodule ConnectionCard.EmailView do
-  use ConnectionCard.Web, :view
+defmodule Syndeo.EmailView do
+  use Syndeo.Web, :view
 end

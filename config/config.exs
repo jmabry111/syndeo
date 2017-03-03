@@ -6,15 +6,15 @@
 use Mix.Config
 
 # General application configuration
-config :connection_card,
-  ecto_repos: [ConnectionCard.Repo]
+config :syndeo,
+  ecto_repos: [Syndeo.Repo]
 
 # Configures the endpoint
-config :connection_card, ConnectionCard.Endpoint,
+config :syndeo, Syndeo.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "Oc1RDd8I//t9YQUePOF1VXghE3d+xVtDg4h8ZsLvhxsDsmq4VRvzuWKky87tMEZ1",
-  render_errors: [view: ConnectionCard.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: ConnectionCard.PubSub,
+  render_errors: [view: Syndeo.ErrorView, accepts: ~w(html json)],
+  pubsub: [name: Syndeo.PubSub,
            adapter: Phoenix.PubSub.PG2]
 
 # Configures Elixir's Logger
@@ -26,4 +26,4 @@ config :logger, :console,
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env}.exs"
 
-config :formulator, translate_error_module: ConnectionCard.ErrorHelpers
+config :formulator, translate_error_module: Syndeo.ErrorHelpers

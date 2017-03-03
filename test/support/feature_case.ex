@@ -1,4 +1,4 @@
-defmodule ConnectionCard.FeatureCase do
+defmodule Syndeo.FeatureCase do
   use ExUnit.CaseTemplate
 
   using do
@@ -7,15 +7,15 @@ defmodule ConnectionCard.FeatureCase do
 
       import Ecto.Schema, except: [build: 2]
       import Ecto.Query, only: [from: 2]
-      import ConnectionCard.Router.Helpers
-      import ConnectionCard.FeatureHelpers
-      import ConnectionCard.RoleHelpers
-      #    import ConnectionCard.AuthHelpers
-      import ConnectionCard.Factory
+      import Syndeo.Router.Helpers
+      import Syndeo.FeatureHelpers
+      import Syndeo.RoleHelpers
+      #    import Syndeo.AuthHelpers
+      import Syndeo.Factory
 
-      alias ConnectionCard.Repo
+      alias Syndeo.Repo
 
-      @endpoint ConnectionCard.Endpoint
+      @endpoint Syndeo.Endpoint
     end
   end
 
@@ -24,10 +24,10 @@ defmodule ConnectionCard.FeatureCase do
       PhantomJS.clear_local_storage
     end
 
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(ConnectionCard.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Syndeo.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(ConnectionCard.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(Syndeo.Repo, {:shared, self()})
     end
 
     Hound.start_session

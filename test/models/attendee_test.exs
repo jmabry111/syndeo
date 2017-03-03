@@ -1,7 +1,7 @@
-defmodule ConnectionCard.AttendeeTest do
-  use ConnectionCard.ModelCase
+defmodule Syndeo.AttendeeTest do
+  use Syndeo.ModelCase
   use Hound.Helpers
-  alias ConnectionCard.Attendee
+  alias Syndeo.Attendee
 
   @valid_attrs %{
     age_range: "some content", 
