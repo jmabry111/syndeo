@@ -21,6 +21,6 @@ config :syndeo, Syndeo.Mailer,
 #  api_key: System.get_env("MAILGUN_API_KEY")
   adapter: Bamboo.SMTPAdapter,
   server: "smtp.mailgun.org",
-  username: SYSTEM.get_env("SMTP_USER"),
-  password: SYSTEM.get_env("SMTP_PASS")
+  username: System.get_env("SMTP_USER"),
+  password: System.get_env("SMTP_PASS")
 
