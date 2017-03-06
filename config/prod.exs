@@ -16,6 +16,11 @@ config :syndeo, Syndeo.Repo,
   ssl: true
 
 config :syndeo, Syndeo.Mailer,
-  adapter: Bamboo.MailgunAdapter,
-  domain: System.get_env("MAILGUN_DOMAIN"),
-  api_key: System.get_env("MAILGUN_API_KEY")
+#  adapter: Bamboo.MailgunAdapter,
+#  domain: System.get_env("MAILGUN_DOMAIN"),
+#  api_key: System.get_env("MAILGUN_API_KEY")
+  adapter: Bamboo.SMTPAdapter,
+  server: "smtp.mailgun.org",
+  username: SYSTEM.get_env("SMTP_USER"),
+  password: SYSTEM.get_env("SMTP_PASS")
+
