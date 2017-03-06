@@ -4,16 +4,15 @@ defmodule Syndeo.AttendeeTest do
   alias Syndeo.Attendee
 
   @valid_attrs %{
-    age_range: "some content", 
-    city: "some content", 
-    email: "some@content.com", 
-    membership_status: "some content", 
-    name: "some content", 
-    phone: "some content", 
-    service: "some content", 
-    sms: true, 
-    state: "some content", 
-    street: "some content", 
+    age_range: "some content",
+    city: "some content",
+    email: "some@content.com",
+    membership_status: "some content",
+    name: "some content",
+    phone: "some content",
+    sms: true,
+    state: "some content",
+    street: "some content",
     zip: "some content"
   }
   @invalid_attrs %{}

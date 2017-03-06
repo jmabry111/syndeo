@@ -3,7 +3,6 @@ defmodule Syndeo.Factory do
 
   def attendee_factory do
     %Syndeo.Attendee{
-      service: "9:00",
       name: sequence(:name, &"John P Churchgoer#{&1}"),
       street: sequence(:street, &"#{&1} Cherub Ave"),
       city: "Pearly Gates",
@@ -19,6 +18,7 @@ defmodule Syndeo.Factory do
 
   def weekly_info_factory do
     %Syndeo.WeeklyInfo{
+      service: "9:00",
       week_date: Timex.today,
       attending_meal: true,
       num_kids: 2,

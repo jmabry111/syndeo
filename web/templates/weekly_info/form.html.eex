@@ -1,40 +1,60 @@
 <%= form_for @changeset, attendee_weekly_info_path(@conn, :create, @attendee), fn f -> %>
   <%= render Syndeo.FormView, "_form_errors.html", changeset: @changeset, form: f %>
     <div class="form-group row">
-      <div class="col-sm-8">
-        <%= input f, :week_date, class: "form-control", label: false, placeholder: "Sunday's Date", id: "datepicker" %>
+      <div class="col-sm-2">
+        <%= label f, :week_date, gettext("Week of:") %>
+      </div>
+      <div class="col-sm-6">
+        <%= input f, :week_date, class: "form-control", label: false, value: Syndeo.WeeklyInfo.week_of(), id: "datepicker" %>
       </div>
     </div>
 
   <div class="form-group row">
     <div class="col-sm-8">
-      <%= checkbox f, :attending_meal %>
-      <%= label f, :attending_meal, gettext("Will you be attending Wednesday's meal?") %>
-    </div>
-  </div>
-  <div class="form-group row">
-    <div class="col-sm-2">
-      <%= input f, :num_kids, class: "form-control", as: :number, label: false, placeholder: "# of kids" %>
-    </div>
-    <div class="col-sm-3">
-      <%= input f, :num_teens, class: "form-control", as: :number, label: false, placeholder: "# of teens" %>
-    </div>
-    <div class="col-sm-3">
-      <%= input f, :num_adults, class: "form-control", as: :number, label: false, placeholder: "# of adults" %>
+      <%= select(f, :service, Syndeo.WeeklyInfo.services, prompt: "Service Time", class: "form-control") %>
     </div>
   </div>
 
   <div class="form-group row">
     <div class="col-sm-8">
-      <%= select(f, :contact, Syndeo.WeeklyInfo.contact_options, prompt: "Contact me about...", class: "form-control") %>
+      <%= label f, :contact, gettext("Please contact me about...") %>
+      <%= select(f, :contact, Syndeo.WeeklyInfo.contact_options, class: "form-control") %>
     </div>
   </div>
-  <div class="form-group row">
+  <div class="form-group row divider">
     <div class="col-sm-8">
       <%= label f, :prayers, "Prayer requests or comments" %>
       <%= input f, :prayers, class: "form-control", as: :textarea, rows: 6 %>
     </div>
   </div>
+
+  <div class="form-group row">
+    <div class="col-sm-8">
+      <%= label f, :attending_meal, gettext("Will you be attending Wednesday's meal?") %>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-sm-2">
+      <%= select(f, :attending_meal, ["Yes", "No"], class: "form-control") %>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-sm-8">
+      If so, please indicate how many people will be attending:
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-sm-2">
+      <%= input f, :num_kids, class: "form-control", as: :number, label: false, placeholder: "kids" %>
+    </div>
+    <div class="col-sm-2">
+      <%= input f, :num_teens, class: "form-control", as: :number, label: false, placeholder: "teens" %>
+    </div>
+    <div class="col-sm-2">
+      <%= input f, :num_adults, class: "form-control", as: :number, label: false, placeholder: "adults" %>
+    </div>
+  </div>
+
 
   <div class="form-group">
     <%= submit "Submit", class: "btn btn-primary" %>

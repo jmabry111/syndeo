@@ -9,6 +9,7 @@ defmodule Syndeo.WeeklyInfo do
     field :num_adults, :integer
     field :prayers, :string
     field :contact, :string
+    field :service, :string
     belongs_to :attendee, Syndeo.Attendee, type: :binary_id
 
     timestamps()
@@ -19,6 +20,7 @@ defmodule Syndeo.WeeklyInfo do
        attendee_id
        week_date
        attending_meal
+       service
      )a
   end
 
@@ -47,4 +49,17 @@ defmodule Syndeo.WeeklyInfo do
       "Other (Please specify in the comments section)"
     ]
   end
+
+  def services do
+    [
+      "9:00",
+      "10:30"
+    ]
+  end
+
+
+  def week_of do
+    Timex.beginning_of_week(Timex.today, :sun)
+  end
+
 end

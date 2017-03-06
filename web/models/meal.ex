@@ -16,4 +16,9 @@ defmodule Syndeo.Meal do
     |> cast(params, [:description, :date])
     |> validate_required([:description, :date])
   end
+
+
+  def find_wed do
+    Timex.end_of_week(Timex.today, :thu)
+  end
 end
