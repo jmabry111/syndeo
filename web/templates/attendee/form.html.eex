@@ -20,8 +20,8 @@
       <%= input f, :phone, class: "form-control", label: false, placeholder: "Phone" %>
     </div>
     <div class="col-sm-6">
-      <%= checkbox(f, :sms) %>
-      <%= label f, :sms, gettext("Texts ok?") %>
+      <%= label f, :sms, gettext("Is it OK if we send this number text messages?") %>
+      <%= select(f, :sms, ["Yes": true, "No": false], class: "form-control", prompt: "") %>
     </div>
   </div>
 

@@ -9,7 +9,7 @@ defmodule Syndeo.WeeklyInfo do
     field :num_adults, :integer
     field :prayers, :string
     field :contact, :string
-    field :service, :string, default: "10:30"
+    field :service, :string
     belongs_to :attendee, Syndeo.Attendee, type: :binary_id
 
     timestamps()
