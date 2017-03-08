@@ -3,13 +3,16 @@ defmodule Syndeo.WeeklyInfoController do
   alias Syndeo.WeeklyInfo
   alias Syndeo.Attendee
   import Syndeo.AttendeeQuery
+  import Syndeo.MealQuery
 
   def index(conn, %{"attendee_id" => attendee_id}) do
     attendee = find_attendee!(attendee_id)
+    meal = find_meal()
+    IO.inspect(meal)
     changeset = WeeklyInfo.changeset(%WeeklyInfo{})
 
     conn
-    |> render_index(attendee, changeset)
+    |> render_index(attendee, meal, changeset)
   end
 
   def create(conn, %{"attendee_id" => attendee_id, "weekly_info" => weekly_info_params}) do
@@ -44,6 +47,16 @@ defmodule Syndeo.WeeklyInfoController do
     conn
     |> assign(:attendee, attendee)
     |> assign(:weekly_info, attendee.weekly_info)
+    |> assign(:meal, conn.assigns[:meal])
+    |> assign(:changeset, changeset)
+    |> render(:index)
+  end
+
+  defp render_index(conn, %Attendee{}=attendee, meal, changeset) do
+    conn
+    |> assign(:attendee, attendee)
+    |> assign(:weekly_info, attendee.weekly_info)
+    |> assign(:meal, meal)
     |> assign(:changeset, changeset)
     |> render(:index)
   end
