@@ -35,15 +35,10 @@
   </div>
   <div class="form-group row">
     <div class="col-sm-2">
-      <%= select(f, :attending_meal, ["Yes": true, "No": false], class: "form-control") %>
+      <%= select(f, :attending_meal, ["Yes": true, "No": false], id: "attending", class: "form-control") %>
     </div>
   </div>
-  <div class="form-group row">
-    <div class="col-sm-8">
-      If so, please indicate how many people will be attending:
-    </div>
-  </div>
-  <div class="form-group row">
+  <div class="form-group row" id="headcounts">
     <div class="col-sm-2">
       <%= input f, :num_kids, class: "form-control", as: :number, label: false, placeholder: "kids" %>
     </div>

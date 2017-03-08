@@ -66,6 +66,6 @@ exports.config = {
   npm: {
     enabled: true,
     styles: {pikaday: ['css/pikaday.css']},
-    globals: {Pikaday: "pikaday"},
+    globals: {Pikaday: "pikaday", $: "jquery", jQuery: "jquery"},
   },
 };

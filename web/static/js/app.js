@@ -19,3 +19,4 @@ import "phoenix_html"
 
 // import socket from "./socket"
 import "./picker.js"
+import "./show_meal_info.js"
