@@ -12,7 +12,6 @@ defmodule Syndeo.Feature.AttendeeTest do
     fill_in "attendee", :city, with: "Rome"
     fill_in "attendee", :state, with: "GA"
     fill_in "attendee", :zip, with: "99999"
-    select "10:30", from: "service"
     select "Adult", from: "age_range"
     select "Member", from: "membership_status"
     submit()
@@ -31,7 +30,6 @@ defmodule Syndeo.Feature.AttendeeTest do
     fill_in "attendee", :city, with: "Rome"
     fill_in "attendee", :state, with: "GA"
     fill_in "attendee", :zip, with: "99999"
-    select "10:30", from: "service"
     select "Adult", from: "age_range"
     select "Member", from: "membership_status"
     submit()
@@ -52,7 +50,6 @@ defmodule Syndeo.Feature.AttendeeTest do
     fill_in "attendee", :email, with: attendee.email
     fill_in "attendee", :city, with: attendee.city
     fill_in "attendee", :state, with: attendee.state
-    select "10:30", from: "service"
     select "Adult", from: "age_range"
     select "Member", from: "membership_status"
     submit()

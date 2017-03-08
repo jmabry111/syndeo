@@ -4,7 +4,6 @@ defmodule Syndeo.Attendee do
 
   @primary_key {:id, :binary_id, autogenerate: true}
   schema "attendees" do
-    field :service, :string
     field :name, :string
     field :street, :string
     field :city, :string
@@ -23,7 +22,6 @@ defmodule Syndeo.Attendee do
 
   defp required_fields do
     [
-      :service,
       :name,
       :city,
       :state,
@@ -50,13 +48,6 @@ defmodule Syndeo.Attendee do
     |> unique_constraint(:email)
     |> validate_format(:email, ~r/.+@.+/)
     |> validate_required(required_fields())
-  end
-
-  def services do
-    [
-      "9:00",
-      "10:30"
-    ]
   end
 
   def membership_status do

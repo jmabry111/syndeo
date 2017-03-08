@@ -4,12 +4,13 @@ defmodule Syndeo.WeeklyInfoTest do
 
   @valid_attrs %{
     attendee_id: "1",
-    attending_meal: true, 
-    contact: "some contant", 
-    num_adults: 42, 
-    num_kids: 42, 
-    num_teens: 42, 
-    prayers: "some content", 
+    attending_meal: true,
+    contact: "some contant",
+    num_adults: 42,
+    num_kids: 42,
+    num_teens: 42,
+    prayers: "some content",
+    service: "some content",
     week_date: Timex.today
   }
   @invalid_attrs %{}
