@@ -45,7 +45,7 @@ mix compile
 echo "Setting up the database"
 mix ecto.reset
 MIX_ENV="test" mix ecto.reset
-#mix do development_seeds
+mix do development_seeds
 
 # Grab JS dependencies from NPM
 echo "Installing npm dependencies"
