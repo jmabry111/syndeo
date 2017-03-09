@@ -4,7 +4,17 @@ defmodule Syndeo.MealQuery do
 
   def find_meal do
     wed = Meal.find_wed
-    Meal
-    |> Repo.get_by!(date: wed)
+    meal =
+      Meal
+      |> Repo.get_by(date: wed)
+    if meal do
+      meal
+    else
+      %Syndeo.Meal{
+        date: ~D[1900-01-01],
+        description: "none",
+        id: 0,
+      }
+    end
   end
 end
