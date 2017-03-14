@@ -51,6 +51,7 @@ defmodule Syndeo.Mixfile do
       {:formulator, "~> 0.0.5"},
       {:gettext, "~> 0.11"},
       {:hound, "~> 1.0"},
+      {:icalendar, "~>0.2.1"},
       {:mailgun, "~> 0.1.2"},
       {:number, "~> 0.5.0"},
       {:phoenix, "~> 1.2.1"},

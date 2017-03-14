@@ -28,33 +28,47 @@
     </div>
   </div>
 
-  <div class="form-group row">
-    <div class="col-sm-8">
-      <%= label f, :attending_meal, gettext("Will you be attending Wednesday's meal?") %>
+  <%= if @meal.description == "No Meal" do %>
+    <div class="form-group row">
+      <div class="col-sm-8">
+        <strong> &#42; There will be no Wednesday night meal this week.</strong>
+      </div>
     </div>
-  </div>
-  <div class="form-group row">
-    <div class="col-sm-2">
-      <%= select(f, :attending_meal, ["Yes": true, "No": false], class: "form-control") %>
+  <% else %>
+    <div class="form-group row">
+      <div class="col-sm-8">
+        The meal for this week will be <%= @meal.description %>.
+      </div>
     </div>
-  </div>
-  <div class="form-group row">
-    <div class="col-sm-8">
-      If so, please indicate how many people will be attending:
+    <div class="form-group row">
+      <div class="col-sm-8">
+        <%= label f, :attending_meal, gettext("Will you be attending Wednesday's meal?") %>
+      </div>
     </div>
-  </div>
-  <div class="form-group row">
-    <div class="col-sm-2">
-      <%= input f, :num_kids, class: "form-control", as: :number, label: false, placeholder: "kids" %>
+    <div class="form-group row">
+      <div class="col-sm-2">
+        <%= select(f, :attending_meal, ["Yes": true, "No": false], id: "attending", class: "form-control") %>
+      </div>
     </div>
-    <div class="col-sm-2">
-      <%= input f, :num_teens, class: "form-control", as: :number, label: false, placeholder: "teens" %>
+    <div id="headcounts">
+      <div class="form-group row">
+        <div class="col-sm-8">
+          Please enter how many will be attending:<br />
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-sm-2">
+          <%= input f, :num_kids, class: "form-control", as: :number, label: false, placeholder: "kids" %>
+        </div>
+        <div class="col-sm-2">
+          <%= input f, :num_teens, class: "form-control", as: :number, label: false, placeholder: "teens" %>
+        </div>
+        <div class="col-sm-2">
+          <%= input f, :num_adults, class: "form-control", as: :number, label: false, placeholder: "adults" %>
+        </div>
+      </div>
     </div>
-    <div class="col-sm-2">
-      <%= input f, :num_adults, class: "form-control", as: :number, label: false, placeholder: "adults" %>
-    </div>
-  </div>
-
+  <% end %>
 
   <div class="form-group">
     <%= submit "Submit", class: "btn btn-primary" %>

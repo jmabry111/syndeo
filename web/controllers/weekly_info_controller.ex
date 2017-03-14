@@ -3,17 +3,20 @@ defmodule Syndeo.WeeklyInfoController do
   alias Syndeo.WeeklyInfo
   alias Syndeo.Attendee
   import Syndeo.AttendeeQuery
+  import Syndeo.MealQuery
 
   def index(conn, %{"attendee_id" => attendee_id}) do
     attendee = find_attendee!(attendee_id)
+    meal = find_meal()
     changeset = WeeklyInfo.changeset(%WeeklyInfo{})
 
     conn
-    |> render_index(attendee, changeset)
+    |> render_index(attendee, meal, changeset)
   end
 
   def create(conn, %{"attendee_id" => attendee_id, "weekly_info" => weekly_info_params}) do
     params = Map.merge(weekly_info_params, %{"attendee_id" => attendee_id})
+    meal = find_meal()
     changeset = WeeklyInfo.changeset(%WeeklyInfo{}, params)
 
     case Repo.insert(changeset) do
@@ -25,7 +28,7 @@ defmodule Syndeo.WeeklyInfoController do
         attendee = find_attendee!(attendee_id)
 
         conn
-        |> render_index(attendee, changeset)
+        |> render_index(attendee, meal, changeset)
     end
   end
 
@@ -40,10 +43,11 @@ defmodule Syndeo.WeeklyInfoController do
     |> redirect(to: attendee_weekly_info_path(conn, :index, attendee_id))
   end
 
-  defp render_index(conn, %Attendee{}=attendee, changeset) do
+  defp render_index(conn, %Attendee{}=attendee, meal, changeset) do
     conn
     |> assign(:attendee, attendee)
     |> assign(:weekly_info, attendee.weekly_info)
+    |> assign(:meal, meal)
     |> assign(:changeset, changeset)
     |> render(:index)
   end
