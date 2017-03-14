@@ -2,7 +2,6 @@ defmodule Syndeo.WeeklyInfoController do
   use Syndeo.Web, :controller
   alias Syndeo.WeeklyInfo
   alias Syndeo.Attendee
-  alias Syndeo.Meal
   import Syndeo.AttendeeQuery
   import Syndeo.MealQuery
 
