@@ -2,27 +2,17 @@ defmodule Syndeo.WeeklyInfoController do
   use Syndeo.Web, :controller
   alias Syndeo.WeeklyInfo
   alias Syndeo.Attendee
+  alias Syndeo.Meal
   import Syndeo.AttendeeQuery
   import Syndeo.MealQuery
 
   def index(conn, %{"attendee_id" => attendee_id}) do
     attendee = find_attendee!(attendee_id)
     meal = find_meal()
-    no_wednesday_meal =
-      %Syndeo.Meal{
-        description: "NO MEAL",
-      }
-    IO.inspect(meal)
-    IO.inspect(no_wednesday_meal)
     changeset = WeeklyInfo.changeset(%WeeklyInfo{})
 
-    if meal.id == 0 do
-      conn
-      |> render_index(attendee, no_wednesday_meal, changeset)
-    else
-      conn
-      |> render_index(attendee, meal, changeset)
-    end
+    conn
+    |> render_index(attendee, meal, changeset)
   end
 
   def create(conn, %{"attendee_id" => attendee_id, "weekly_info" => weekly_info_params}) do
@@ -59,7 +49,6 @@ defmodule Syndeo.WeeklyInfoController do
     |> assign(:attendee, attendee)
     |> assign(:weekly_info, attendee.weekly_info)
     |> assign(:meal, meal)
-    |> assign(:no_wednesday_meal, is_nil(meal))
     |> assign(:changeset, changeset)
     |> render(:index)
   end

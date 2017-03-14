@@ -1,4 +1,4 @@
-<%= render "form.html", changeset: @changeset, conn: @conn, attendee: @attendee, meal: @meal, no_wednesday_meal: @no_wednesday_meal %>
+<%= render "form.html", changeset: @changeset, conn: @conn, attendee: @attendee, meal: @meal %>
 
 <h3>Previous weeks</h3>
 <%= if Enum.any?(@weekly_info) do %>
@@ -6,7 +6,9 @@
     <thead>
       <tr>
         <th>Week date</th>
-        <th>Attended Wednesday?</th>
+        <th>Service Attended</th>
+        <th>Wednesday Meal</th>
+        <th>Prayers</th>
 
         <th></th>
       </tr>
@@ -21,15 +23,20 @@
               :strftime
           ) %>
         </td>
-        <td><%= weekly_info.attending_meal %></td>
-
+        <td><%= weekly_info.service %></td>
+        <%= if weekly_info.attending_meal == true do %>
+          <td>Yes</td>
+        <% else %>
+          <td>No</td>
+        <% end %>
+        <td><%= weekly_info.prayers %></td>
         <td class="text-right">
           <%= link(
-            "Remove",
+            "X",
             to: attendee_weekly_info_path(@conn, :delete, @attendee, weekly_info),
             method: :delete,
             data: [confirm: "Are you sure you want to remove this?"],
-            class: "btn btn-danger"
+            class: "btn-xs btn-danger"
           ) %>
         </td>
       </tr>

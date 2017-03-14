@@ -11,9 +11,7 @@ defmodule Syndeo.MealQuery do
       meal
     else
       %Syndeo.Meal{
-        date: ~D[1900-01-01],
-        description: "none",
-        id: 0,
+        description: "No Meal",
       }
     end
   end
