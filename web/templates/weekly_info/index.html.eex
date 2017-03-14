@@ -24,7 +24,7 @@
           ) %>
         </td>
         <td><%= weekly_info.service %></td>
-        <%= if weekly_info.attending_meal == true do %>
+        <%= if weekly_info.attending_meal do %>
           <td>Yes</td>
         <% else %>
           <td>No</td>
