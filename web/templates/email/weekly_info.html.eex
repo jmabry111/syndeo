@@ -1,0 +1,20 @@
+<h1>Thanks <%= @attendee.name %>!</h1>
+
+<p>Here is your connection card for the week of <%= @weekly_info.week_date %>:</p>
+<ul>
+  <li><strong>Service attended</strong> &mdash; <%= @weekly_info.service %>.</li>
+  <li><strong>Please contact me about</strong> &mdash; <%= @weekly_info.contact %>.</li>
+  <li><strong>Prayer requests</strong> &mdash; <%= @weekly_info.prayers %>.</li>
+</ul>
+  <%= if @weekly_info.attending_meal do %>
+    <p>
+      We look forward to fellowshipping with you on Wednesday.<br />
+      <%= link gettext("Add to calendar"), to: ics_url(Syndeo.Endpoint, :show, @meal) %>
+    </p>
+  <% else %>
+    <p>We are sorry you cannot attend our meal Wednesday. Please come back and visit again.</p>
+  <% end %>
+
+<p>We love hearing from you and having you worship with us.</p>
+<p>God Bless you,<br />
+  Stone Memorial Christian Church</p>

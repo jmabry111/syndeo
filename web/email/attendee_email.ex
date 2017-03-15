@@ -17,6 +17,14 @@ defmodule Syndeo.AttendeeEmail do
     |> render(:tokenized_link, attendee: attendee, token: token)
   end
 
+  def weekly_email(weekly_info, attendee, meal) do
+    base_email()
+    |> to(attendee.email)
+    |> subject("Thanks for connecting!")
+    |> put_layout({Syndeo.LayoutView, :email})
+    |> render(:weekly_info, weekly_info: weekly_info, attendee: attendee, meal: meal)
+  end
+
   def base_email do
     new_email()
     |> from("noreply@example.com")

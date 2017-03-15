@@ -2,6 +2,8 @@ defmodule Syndeo.WeeklyInfoController do
   use Syndeo.Web, :controller
   alias Syndeo.WeeklyInfo
   alias Syndeo.Attendee
+  alias Syndeo.AttendeeEmail
+  alias Syndeo.Mailer
   import Syndeo.AttendeeQuery
   import Syndeo.MealQuery
 
@@ -17,10 +19,15 @@ defmodule Syndeo.WeeklyInfoController do
   def create(conn, %{"attendee_id" => attendee_id, "weekly_info" => weekly_info_params}) do
     params = Map.merge(weekly_info_params, %{"attendee_id" => attendee_id})
     meal = find_meal()
+    attendee = find_attendee!(attendee_id)
     changeset = WeeklyInfo.changeset(%WeeklyInfo{}, params)
 
     case Repo.insert(changeset) do
-      {:ok, _weekly_info} ->
+      {:ok, weekly_info} ->
+        weekly_info
+        |> AttendeeEmail.weekly_email(attendee, meal)
+        |> Mailer.deliver_later
+
         conn
         |> put_flash(:info, gettext("We've added your info for this week."))
         |> redirect(to: attendee_weekly_info_path(conn, :index, attendee_id))

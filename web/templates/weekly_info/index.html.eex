@@ -24,11 +24,7 @@
           ) %>
         </td>
         <td><%= weekly_info.service %></td>
-        <%= if weekly_info.attending_meal == true do %>
-          <td>Yes</td>
-        <% else %>
-          <td>No</td>
-        <% end %>
+        <td><%= weekly_info.attending_meal |> Syndeo.WeeklyInfo.to_display %></td>
         <td><%= weekly_info.prayers %></td>
         <td class="text-right">
           <%= link(
