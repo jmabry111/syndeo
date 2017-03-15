@@ -43,7 +43,6 @@ defmodule Syndeo.Feature.WeeklyInfoTest do
     select "9:00", from: "service"
     select "Church membership", from: "contact"
     fill_in "weekly_info", :prayers, with: "Pray for our leaders"
-    take_screenshot("shot.png")
     select "Yes", from: "attending_meal"
     fill_in "weekly_info", :num_teens, with: 1
     fill_in "weekly_info", :num_adults, with: 2
