@@ -29,6 +29,13 @@ defmodule Syndeo.Factory do
     }
   end
 
+  def meal_factory do
+    %Syndeo.Meal{
+      description: "Lasagna",
+      date: Timex.end_of_week(Timex.today, :thu),
+    }
+  end
+
   def save(struct) do
     module_name = struct.__struct__
     params = Map.from_struct(struct)

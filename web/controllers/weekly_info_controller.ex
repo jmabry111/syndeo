@@ -24,9 +24,6 @@ defmodule Syndeo.WeeklyInfoController do
 
     case Repo.insert(changeset) do
       {:ok, weekly_info} ->
-        IO.inspect(attendee)
-        IO.inspect(weekly_info)
-        IO.inspect(meal)
         weekly_info
         |> AttendeeEmail.weekly_email(attendee, meal)
         |> Mailer.deliver_later
