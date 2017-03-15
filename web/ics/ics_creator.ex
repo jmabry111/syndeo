@@ -7,7 +7,7 @@ defmodule Syndeo.IcsCreator do
         dtstart: start_time(date),
         dtend: end_time(date),
         description: "Come enjoy some #{description} with us.",
-        location: "3030 Virginia Ave, Collinsville, VA",
+        location: "3030 Virginia Ave, Collinsville, VA, 24078",
       },
     ]
     %ICalendar{ events: events } |> ICalendar.to_ics

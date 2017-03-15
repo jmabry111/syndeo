@@ -62,4 +62,6 @@ defmodule Syndeo.WeeklyInfo do
     Timex.beginning_of_week(Timex.today, :sun)
   end
 
+  def to_display(true), do: "Yes"
+  def to_display(false), do: "No"
 end

@@ -7,11 +7,10 @@ defmodule Syndeo.IcsController do
     meal = find_meal()
     ics = IcsCreator.create_ics(meal.date, meal.description)
     conn
-    |> send_ics(ics)
+    |> send_ics(meal.date, ics)
   end
 
-  defp send_ics(conn, contents) do
-    filename = "SMCC_Meal"
+  defp send_ics(conn, filename, contents) do
     conn
     |> put_resp_content_type("text/ics")
     |> put_resp_header("content-disposition", "attachment; filename=\"#{filename}.ics\"")
