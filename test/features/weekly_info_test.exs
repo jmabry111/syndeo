@@ -4,27 +4,6 @@ defmodule Syndeo.Feature.WeeklyInfoTest do
   alias Syndeo.Attendee
   alias Syndeo.WeeklyInfo
 
-  test "create an attendee and weekly card" do
-    navigate_to "/"
-    fill_in "attendee", :name, with: "John Paul"
-    fill_in "attendee", :email, with: "jp@example.com"
-    fill_in "attendee", :phone, with: "2342345555"
-    fill_in "attendee", :street, with: "3 Holy St."
-    fill_in "attendee", :city, with: "Rome"
-    fill_in "attendee", :state, with: "GA"
-    fill_in "attendee", :zip, with: "99999"
-    select "Adult", from: "age_range"
-    select "Member", from: "membership_status"
-    submit()
-
-    select "9:00", from: "service"
-    select "Church membership", from: "contact"
-    fill_in "weekly_info", :prayers, with: "Pray for our leaders"
-    submit()
-
-    assert visible_page_text() =~ "We've added your info for this week."
-  end
-
   test "create an attendee and weekly card with meal info" do
     meal = insert(:meal)
 
