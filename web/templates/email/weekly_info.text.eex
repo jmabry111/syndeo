@@ -9,7 +9,7 @@ Here is your connection card for the week of <%= @weekly_info.week_date %>:
 
   <%= if @weekly_info.attending_meal do %>
       We look forward to fellowshipping with you on Wednesday.
-      <%= link gettext("Add to calendar"), to: ics_url(Syndeo.Endpoint, :show, @meal) %>
+      <%= ics_url(Syndeo.Endpoint, :show, @meal) %>
   <% else %>
     We are sorry you cannot attend our meal Wednesday. Please come back and visit again.
   <% end %>
