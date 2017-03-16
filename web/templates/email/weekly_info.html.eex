@@ -1,8 +1,3 @@
-<html>
-<head>
-  <script src="https://use.fontawesome.com/82c93ec4ce.js"></script>
-</head>
-<body>
 <h1>Thanks <%= @attendee.name %>!</h1>
 
 <p>Here is your connection card for the week of <%= @weekly_info.week_date %>:</p>
@@ -25,8 +20,8 @@
 
 <%= link to: ics_url(Syndeo.Endpoint, :show, @meal) do %>
 <div>
-    <i class="fa fa-calendar" aria-hidden="true" title="Add to calendar" style="font-size:1.75em;"></i>
+  <div style="background-color:blue;color:white;border-radius:5px;padding:5px;width:140px;text-align:center;">
+    <p>Add Mealtime<br />to Calendar!</p>
+  </div>
 </div>
 <% end %>
-</body>
-</html>
