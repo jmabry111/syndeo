@@ -1,3 +1,8 @@
+<html>
+<head>
+  <script src="https://use.fontawesome.com/82c93ec4ce.js"></script>
+</head>
+<body>
 <h1>Thanks <%= @attendee.name %>!</h1>
 
 <p>Here is your connection card for the week of <%= @weekly_info.week_date %>:</p>
@@ -8,8 +13,7 @@
 </ul>
   <%= if @weekly_info.attending_meal do %>
     <p>
-      We look forward to fellowshipping with you on Wednesday.<br />
-      <%= link gettext("Add to calendar"), to: ics_url(Syndeo.Endpoint, :show, @meal) %>
+      We look forward to fellowshipping with you on Wednesday.
     </p>
   <% else %>
     <p>We are sorry you cannot attend our meal Wednesday. Please come back and visit again.</p>
@@ -18,3 +22,11 @@
 <p>We love hearing from you and having you worship with us.</p>
 <p>God Bless you,<br />
   Stone Memorial Christian Church</p>
+
+<%= link to: ics_url(Syndeo.Endpoint, :show, @meal) do %>
+<div>
+    <i class="fa fa-calendar" aria-hidden="true" title="Add to calendar" style="font-size:1.75em;"></i>
+</div>
+<% end %>
+</body>
+</html>

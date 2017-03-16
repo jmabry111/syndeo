@@ -9,6 +9,7 @@
 
     <title>SMCC's Online Connection Card!</title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+    <script src="https://use.fontawesome.com/82c93ec4ce.js"></script>
   </head>
 
   <body>
