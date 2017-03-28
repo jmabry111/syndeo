@@ -39,7 +39,7 @@ defmodule Syndeo.Router do
 
   scope "/admin", Syndeo, as: :admin do
     pipe_through [:browser, Syndeo.RequireAdmin]
-    resources "/users", Admin.UserController
-    resources "/attendees", Admin.AttendeeController, only: [:index]
+    resources "/users", Admin.UserController, only: [:index, :create, :new, :edit, :update, :delete]
+    resources "/attendees", Admin.AttendeeController, only: [:index, :edit, :delete, :show]
   end
 end

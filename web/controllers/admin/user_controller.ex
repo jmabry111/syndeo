@@ -31,12 +31,6 @@ defmodule Syndeo.Admin.UserController do
     |> render(:index)
   end
 
-  def show(conn, %{"id" => id}) do
-    user = Repo.get!(User, id)
-    conn
-    |> render(:show, user: user)
-  end
-
   def edit(conn, %{"id" => id}) do
     user = Repo.get!(User, id)
     changeset = User.changeset(user)
@@ -49,10 +43,10 @@ defmodule Syndeo.Admin.UserController do
     changeset = User.changeset(user, user_params)
 
     case Repo.update(changeset) do
-      {:ok, user} ->
+      {:ok, _} ->
         conn
         |> put_flash(:info, "User updated successfully.")
-        |> redirect(to: admin_user_path(conn, :show, user))
+        |> redirect(to: admin_user_path(conn, :index))
       {:error, changeset} ->
         conn
         |> render(:edit, user: user, changeset: changeset)

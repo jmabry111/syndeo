@@ -38,7 +38,6 @@ defmodule Syndeo.Factory do
 
   def user_factory do
     %Syndeo.User{
-      name: sequence(:name, &"User Name#{&1}"),
       email: sequence(:email, &"user#{&1}@example.com"),
       password: "password",
     }

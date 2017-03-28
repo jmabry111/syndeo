@@ -12,10 +12,7 @@ defmodule Mix.Tasks.DevelopmentSeeds do
       Ecto.Adapters.SQL.query!(Repo, "TRUNCATE TABLE #{table_name} CASCADE")
     end
 
-    build(:user,
-          name: "Admin User",
-          email: "admin@example.com",
-          password: "password")
+    build(:user, email: "admin@example.com", password: "password")
     |> save
     |> print_user
 
@@ -41,6 +38,6 @@ defmodule Mix.Tasks.DevelopmentSeeds do
   end
 
   defp print_user(user) do
-    IO.puts "User: #{user.name}/#{user.email}/#{user.password}"
+    IO.puts "User: #{user.email}/#{user.password}"
   end
 end

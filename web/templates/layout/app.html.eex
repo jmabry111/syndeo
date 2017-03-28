@@ -16,6 +16,11 @@
     <div class="container">
       <header class="header">
         <nav role="navigation">
+          <%= if @conn.assigns[:current_user] do %>
+            <ul class="nav nav-pills pull-left">
+              <li>Hi, <%= @current_user.email %>!</li>
+            </ul>
+          <% end %>
           <ul class="nav nav-pills pull-right">
             <%= if @conn.assigns[:current_attendee] do %>
               <li>Welcome,<br /><%= @current_attendee.name %>!</li>

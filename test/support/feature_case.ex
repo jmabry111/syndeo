@@ -10,7 +10,7 @@ defmodule Syndeo.FeatureCase do
       import Syndeo.Router.Helpers
       import Syndeo.FeatureHelpers
       import Syndeo.RoleHelpers
-      #    import Syndeo.AuthHelpers
+      import Syndeo.AuthHelpers
       import Syndeo.Factory
 
       alias Syndeo.Repo

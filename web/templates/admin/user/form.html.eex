@@ -1,5 +1,5 @@
 <%= form_for @changeset, @action, fn f -> %>
-  <%= render Wilbur.FormView, "_form_errors.html", changeset: @changeset, form: f %>
+  <%= render Syndeo.FormView, "_form_errors.html", changeset: @changeset, form: f %>
 
   <%= input f, :email, autofocus: "true", class: "form-control" %>
 
