@@ -24,6 +24,7 @@ defmodule Syndeo.Router do
   end
   scope "/", Syndeo do
     pipe_through [:browser]
+    resources "/session", SessionController, only: [:new, :create, :delete], singleton: true
     resources "/attendees", AttendeeController, only: [:new, :create]
     get "/", AttendeeController, :new
     resources "/tokenized_email", TokenizedEmailController, only: [:create]
@@ -42,5 +43,6 @@ defmodule Syndeo.Router do
   scope "/admin", Syndeo as: :admin do
     pipe_through [:browser, Syndeo.RequireAdmin]
     resources "/users", Admin.UserController
+    resources "/attendees", Admin.AttendeeController, only: [:index]
   end
 end

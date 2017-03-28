@@ -1,0 +1,7 @@
+<h1>Hello, <%= @attendee.name %>!</h1>
+
+<%= link(
+  gettext("Fill out card for this week."),
+  to: attendee_weekly_info_path(@conn, :index, @attendee),
+  class: "btn btn-primary",
+) %>

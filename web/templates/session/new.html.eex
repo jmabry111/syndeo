@@ -1,0 +1,11 @@
+<h2>Sign in</h2>
+
+<%= form_for @conn, session_path(@conn, :create), [as: :session], fn f -> %>
+  <%= label f, :name %>
+  <%= text_input f, :name, class: "form-control" %>
+  <%= label f, :email %>
+  <%= text_input f, :email, autofocus: "true", class: "form-control" %>
+  <%= label f, :password %>
+  <%= password_input f, :password, class: "form-control" %>
+  <%= submit gettext("Sign in"), class: "btn btn-primary" %>
+<% end %>
