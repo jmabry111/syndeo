@@ -46,6 +46,7 @@ defmodule Syndeo.Mixfile do
     [
       {:bamboo, "~> 0.8"},
       {:cowboy, "~> 1.0"},
+      {:doorman, "~> 0.5.1"},
       {:ex_machina, github: "thoughtbot/ex_machina"},
       {:ex_spec, "~> 2.0.1", only: :test},
       {:formulator, "~> 0.0.5"},
