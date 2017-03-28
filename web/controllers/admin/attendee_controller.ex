@@ -10,15 +10,15 @@ defmodule Syndeo.Admin.AttendeeController do
     |> render(:index)
   end
 
-  def show(conn, %{"id" => _id}) do
-    attendee = find_attendee(id)
+  def show(conn, %{"id" => id}) do
+    attendee = find_attendee!(id)
     conn
     |> assign(:attendee, attendee)
     |> render(:show)
   end
 
   def edit(conn, %{"id" => id}) do
-    attendee = find_attendee(id)
+    attendee = find_attendee!(id)
     changeset = Attendee.changeset(attendee)
 
     conn
@@ -28,7 +28,7 @@ defmodule Syndeo.Admin.AttendeeController do
   end
 
   def update(conn, %{"id" => id, "attendee" => attendee_params}) do
-    attendee = find_attendee(id)
+    attendee = find_attendee!(id)
     changeset = Attendee.changeset(attendee, attendee_params)
 
     case Repo.update(changeset) do

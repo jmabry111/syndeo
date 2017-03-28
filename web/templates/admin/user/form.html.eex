@@ -1,29 +1,9 @@
 <%= form_for @changeset, @action, fn f -> %>
-  <%= if @changeset.action do %>
-    <div class="alert alert-danger">
-      <p>Oops, something went wrong! Please check the errors below.</p>
-    </div>
-  <% end %>
+  <%= render Wilbur.FormView, "_form_errors.html", changeset: @changeset, form: f %>
 
-  <div class="form-group">
-    <%= label f, :name, class: "control-label" %>
-    <%= text_input f, :name, class: "form-control" %>
-    <%= error_tag f, :name %>
-  </div>
+  <%= input f, :email, autofocus: "true", class: "form-control" %>
 
-  <div class="form-group">
-    <%= label f, :email, class: "control-label" %>
-    <%= text_input f, :email, class: "form-control" %>
-    <%= error_tag f, :email %>
-  </div>
+  <%= input f, :password, class: "form-control" %>
 
-  <div class="form-group">
-    <%= label f, :hashed_password, class: "control-label" %>
-    <%= text_input f, :hashed_password, class: "form-control" %>
-    <%= error_tag f, :hashed_password %>
-  </div>
-
-  <div class="form-group">
-    <%= submit "Submit", class: "btn btn-primary" %>
-  </div>
+  <%= submit gettext("Submit"), class: "btn btn-primary" %>
 <% end %>

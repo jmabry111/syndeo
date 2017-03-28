@@ -19,9 +19,6 @@ defmodule Syndeo.Router do
     forward "/sent_emails", Bamboo.EmailPreviewPlug
   end
 
-  pipeline :api do
-    plug :accepts, ["json"]
-  end
   scope "/", Syndeo do
     pipe_through [:browser]
     resources "/session", SessionController, only: [:new, :create, :delete], singleton: true
@@ -40,7 +37,7 @@ defmodule Syndeo.Router do
     end
   end
 
-  scope "/admin", Syndeo as: :admin do
+  scope "/admin", Syndeo, as: :admin do
     pipe_through [:browser, Syndeo.RequireAdmin]
     resources "/users", Admin.UserController
     resources "/attendees", Admin.AttendeeController, only: [:index]
