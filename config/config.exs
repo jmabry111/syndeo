@@ -27,3 +27,8 @@ config :logger, :console,
 import_config "#{Mix.env}.exs"
 
 config :formulator, translate_error_module: Syndeo.ErrorHelpers
+
+config :doorman,
+  repo: Syndeo.Repo,
+  secure_with: Doorman.Auth.Bcrypt,
+  user_module: Syndeo.User

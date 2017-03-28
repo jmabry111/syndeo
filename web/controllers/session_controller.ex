@@ -14,7 +14,7 @@ defmodule Syndeo.SessionController do
       |> put_flash(:notice, gettext("Successfully logged in"))
       |> redirect(to: redirect_path(conn))
     else
-      prevent_brute_force_attacks
+      prevent_brute_force_attacks()
 
       conn
       |> put_flash(:error, gettext("Invalid email or password"))

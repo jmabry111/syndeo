@@ -12,6 +12,13 @@ defmodule Mix.Tasks.DevelopmentSeeds do
       Ecto.Adapters.SQL.query!(Repo, "TRUNCATE TABLE #{table_name} CASCADE")
     end
 
+    build(:user,
+          name: "Admin User",
+          email: "admin@example.com",
+          password: "password")
+    |> save
+    |> print_user
+
     insert(:attendee, name: "John")
     insert(:attendee, name: "Simon Peter")
     insert(:attendee, name: "Andrew")
@@ -31,5 +38,9 @@ defmodule Mix.Tasks.DevelopmentSeeds do
        attendees
        weeklyinfo
      )
+  end
+
+  defp print_user(user) do
+    IO.puts "User: #{user.name}/#{user.email}/#{user.password}"
   end
 end
