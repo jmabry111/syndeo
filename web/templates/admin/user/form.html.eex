@@ -1,0 +1,9 @@
+<%= form_for @changeset, @action, fn f -> %>
+  <%= render Syndeo.FormView, "_form_errors.html", changeset: @changeset, form: f %>
+
+  <%= input f, :email, autofocus: "true", class: "form-control" %>
+
+  <%= input f, :password, class: "form-control" %>
+
+  <%= submit gettext("Submit"), class: "btn btn-primary" %>
+<% end %>

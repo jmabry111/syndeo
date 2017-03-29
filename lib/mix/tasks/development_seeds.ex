@@ -2,6 +2,7 @@ defmodule Mix.Tasks.DevelopmentSeeds do
   use Mix.Task
   import Syndeo.Factory
   alias Syndeo.Repo
+  alias Syndeo.User
 
   @doc "insert dev data"
   def run(_args) do
@@ -11,6 +12,10 @@ defmodule Mix.Tasks.DevelopmentSeeds do
     for table_name <- tables_to_truncate() do
       Ecto.Adapters.SQL.query!(Repo, "TRUNCATE TABLE #{table_name} CASCADE")
     end
+
+    build(:user, email: "admin@example.com", password: "password")
+    |> save
+    |> print
 
     insert(:attendee, name: "John")
     insert(:attendee, name: "Simon Peter")
@@ -31,5 +36,9 @@ defmodule Mix.Tasks.DevelopmentSeeds do
        attendees
        weeklyinfo
      )
+  end
+
+  defp print(%User{}=user) do
+    IO.puts "User: #{user.email}/#{user.password}"
   end
 end

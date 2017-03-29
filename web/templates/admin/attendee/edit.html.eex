@@ -1,0 +1,8 @@
+<h2><%= gettext("Edit attendee") %></h2>
+
+<%= render(
+  "form.html",
+  changeset: @changeset,
+  action: admin_attendee_path(@conn, :update, @attendee)
+) %>
+

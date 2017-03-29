@@ -1,0 +1,10 @@
+  <div class="card">
+    <header class="card-header">
+      <h3 class="card-header-title"><%= gettext("Create User") %></h3>
+    </header>
+    <%= render(
+      "form.html",
+      changeset: @changeset,
+      action: admin_user_path(@conn, :create)
+    ) %>
+  </div>

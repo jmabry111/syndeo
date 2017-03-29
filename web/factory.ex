@@ -36,6 +36,13 @@ defmodule Syndeo.Factory do
     }
   end
 
+  def user_factory do
+    %Syndeo.User{
+      email: sequence(:email, &"user#{&1}@example.com"),
+      password: "password",
+    }
+  end
+
   def save(struct) do
     module_name = struct.__struct__
     params = Map.from_struct(struct)
