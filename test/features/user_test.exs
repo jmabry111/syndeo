@@ -1,5 +1,6 @@
 defmodule Syndeo.Feature.UserTest do
   use Syndeo.FeatureCase
+  alias Syndeo.User
 
   test "create a user and it shows" do
     user = build(:user) |> save
@@ -35,5 +36,6 @@ defmodule Syndeo.Feature.UserTest do
     click_on "Delete"
 
     refute visible_page_text() =~ user.email
+    refute Repo.get(User, user.id)
   end
 end
