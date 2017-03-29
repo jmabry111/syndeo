@@ -23,7 +23,9 @@
       <td class="text-right">
         <%= link "Show", to: meal_path(@conn, :show, meal), class: "btn btn-default btn-xs" %>
         <%= link "Edit", to: meal_path(@conn, :edit, meal), class: "btn btn-default btn-xs" %>
-        <%= link "Delete", to: meal_path(@conn, :delete, meal), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+        <%= delete_button to: meal_path(@conn, :delete, meal), class: "btn btn-danger btn-xs" do %>
+          <%= gettext("Remove Meal") %>
+        <% end %>
       </td>
     </tr>
 <% end %>

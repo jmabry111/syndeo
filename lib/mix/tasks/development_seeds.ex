@@ -2,6 +2,7 @@ defmodule Mix.Tasks.DevelopmentSeeds do
   use Mix.Task
   import Syndeo.Factory
   alias Syndeo.Repo
+  alias Syndeo.User
 
   @doc "insert dev data"
   def run(_args) do
@@ -14,7 +15,7 @@ defmodule Mix.Tasks.DevelopmentSeeds do
 
     build(:user, email: "admin@example.com", password: "password")
     |> save
-    |> print_user
+    |> print
 
     insert(:attendee, name: "John")
     insert(:attendee, name: "Simon Peter")
@@ -37,7 +38,7 @@ defmodule Mix.Tasks.DevelopmentSeeds do
      )
   end
 
-  defp print_user(user) do
+  defp print(%User{}=user) do
     IO.puts "User: #{user.email}/#{user.password}"
   end
 end

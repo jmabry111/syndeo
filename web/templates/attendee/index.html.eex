@@ -18,7 +18,9 @@
       <td class="text-right">
         <%= link "Show", to: attendee_path(@conn, :show, attendee), class: "btn btn-default btn-xs" %>
         <%= link "Edit", to: attendee_path(@conn, :edit, attendee), class: "btn btn-default btn-xs" %>
-        <%= link "Delete", to: attendee_path(@conn, :delete, attendee), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+        <%= delete_button to: attendee_path(@conn, :delete, attendee), class: "btn btn-danger btn-xs" do %>
+          <%= gettext("Delete Attendee") %>
+        <% end %>
       </td>
     </tr>
 <% end %>

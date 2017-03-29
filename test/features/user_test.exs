@@ -15,7 +15,7 @@ defmodule Syndeo.Feature.UserTest do
   end
 
   test "update existing user" do
-    user = build(:user) |> save
+    user = build(:user, email: "mabry@example.com") |> save
     sign_in_and_visit "/admin/users", user
     click_on "Edit"
 
