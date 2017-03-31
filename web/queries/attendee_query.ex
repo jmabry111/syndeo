@@ -7,4 +7,9 @@ defmodule Syndeo.AttendeeQuery do
     |> Repo.get!(id)
     |> Repo.preload([:weekly_info])
   end
+
+  def find_attendees_with_current_week_info do
+    Repo.all(Attendee)
+    |> Repo.preload([:weekly_info])
+  end
 end

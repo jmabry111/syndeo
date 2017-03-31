@@ -41,5 +41,6 @@ defmodule Syndeo.Router do
     resources "/users", Admin.UserController, only: [:index, :create, :new, :edit, :update, :delete]
     resources "/attendees", Admin.AttendeeController, only: [:index, :edit, :delete, :show]
     resources "/meals", Admin.MealController
+    resources "/weekly_info", Admin.WeeklyInfoController, only: [:index]
   end
 end
