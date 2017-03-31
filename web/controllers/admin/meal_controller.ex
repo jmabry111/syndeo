@@ -1,4 +1,4 @@
-defmodule Syndeo.MealController do
+defmodule Syndeo.Admin.MealController do
   use Syndeo.Web, :controller
 
   alias Syndeo.Meal
@@ -20,7 +20,7 @@ defmodule Syndeo.MealController do
       {:ok, _meal} ->
         conn
         |> put_flash(:info, "Meal created successfully.")
-        |> redirect(to: meal_path(conn, :index))
+        |> redirect(to: admin_meal_path(conn, :index))
       {:error, changeset} ->
         render(conn, "new.html", changeset: changeset)
     end
@@ -45,7 +45,7 @@ defmodule Syndeo.MealController do
       {:ok, meal} ->
         conn
         |> put_flash(:info, "Meal updated successfully.")
-        |> redirect(to: meal_path(conn, :show, meal))
+        |> redirect(to: admin_meal_path(conn, :show, meal))
       {:error, changeset} ->
         render(conn, "edit.html", meal: meal, changeset: changeset)
     end
@@ -54,12 +54,10 @@ defmodule Syndeo.MealController do
   def delete(conn, %{"id" => id}) do
     meal = Repo.get!(Meal, id)
 
-    # Here we use delete! (with a bang) because we expect
-    # it to always work (and if it does not, it will raise).
     Repo.delete!(meal)
 
     conn
     |> put_flash(:info, "Meal deleted successfully.")
-    |> redirect(to: meal_path(conn, :index))
+    |> redirect(to: admin_meal_path(conn, :index))
   end
 end

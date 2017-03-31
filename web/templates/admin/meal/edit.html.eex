@@ -1,0 +1,6 @@
+<h2>Edit meal</h2>
+
+<%= render "form.html", changeset: @changeset,
+                        action: admin_meal_path(@conn, :update, @meal) %>
+
+<%= link "Back", to: admin_meal_path(@conn, :index) %>

@@ -14,5 +14,5 @@
 
 </ul>
 
-<%= link "Edit", to: meal_path(@conn, :edit, @meal) %>
-<%= link "Back", to: meal_path(@conn, :index) %>
+<%= link "Edit", to: admin_meal_path(@conn, :edit, @meal) %>
+<%= link "Back", to: admin_meal_path(@conn, :index) %>

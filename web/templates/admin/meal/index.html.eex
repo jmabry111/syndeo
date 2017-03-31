@@ -21,9 +21,9 @@
           ) %>
       </td>
       <td class="text-right">
-        <%= link "Show", to: meal_path(@conn, :show, meal), class: "btn btn-default btn-xs" %>
-        <%= link "Edit", to: meal_path(@conn, :edit, meal), class: "btn btn-default btn-xs" %>
-        <%= delete_button to: meal_path(@conn, :delete, meal), class: "btn btn-danger btn-xs" do %>
+        <%= link "Show", to: admin_meal_path(@conn, :show, meal), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: admin_meal_path(@conn, :edit, meal), class: "btn btn-default btn-xs" %>
+        <%= delete_button to: admin_meal_path(@conn, :delete, meal), class: "btn btn-danger btn-xs" do %>
           <%= gettext("Remove Meal") %>
         <% end %>
       </td>
@@ -32,4 +32,4 @@
   </tbody>
 </table>
 
-<%= link "New meal", to: meal_path(@conn, :new) %>
+<%= link "New meal", to: admin_meal_path(@conn, :new) %>
