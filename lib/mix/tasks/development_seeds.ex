@@ -17,18 +17,29 @@ defmodule Mix.Tasks.DevelopmentSeeds do
     |> save
     |> print
 
-    insert(:attendee, name: "John")
-    insert(:attendee, name: "Simon Peter")
-    insert(:attendee, name: "Andrew")
-    insert(:attendee, name: "Thomas")
-    insert(:attendee, name: "Philip")
-    insert(:attendee, name: "Simon the Zealot")
-    insert(:attendee, name: "Bartholomew")
-    insert(:attendee, name: "Matthew")
-    insert(:attendee, name: "Thaddeus")
-    insert(:attendee, name: "James, son of Zebedee")
-    insert(:attendee, name: "James, son of Alphaeus")
-    insert(:attendee, name: "Judas")
+    [
+      "John",
+      "Simon Peter",
+      "Andrew",
+      "Thomas",
+      "Philip",
+      "Simon the Zealot",
+      "Bartholomew",
+      "Matthew",
+      "Thaddeus",
+      "James, son of Zebedee",
+      "James, son of Alphaeus",
+      "Judas",
+    ] |> Enum.each(&create_attendee_with_week_info/1)
+  end
+
+  defp create_attendee_with_week_info(name) do
+    insert(:attendee, name: name)
+    |> insert_weekly_info()
+  end
+
+  defp insert_weekly_info(attendee) do
+    insert(:weekly_info, attendee: attendee)
   end
 
   defp tables_to_truncate do

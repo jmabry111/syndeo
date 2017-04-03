@@ -19,7 +19,7 @@ defmodule Syndeo.Factory do
   def weekly_info_factory do
     %Syndeo.WeeklyInfo{
       service: "9:00",
-      week_date: Timex.today,
+      week_date: Syndeo.WeeklyInfo.week_of(),
       attending_meal: true,
       num_kids: 2,
       num_teens: 1,
