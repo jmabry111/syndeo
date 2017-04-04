@@ -1,37 +1,41 @@
 <div class="container">
 <h2>Attendee info</h2>
 <%= if Enum.any?(@attendees) do %>
+  <div class="row row-bottom-border">
+    <div class="col-sm-3"><h4>Name</h4></div>
+    <div class="col-sm-2"><h4>Service</h4></div>
+    <div class="col-sm-2"><h4>Meal</h4></div>
+    <div class="col-sm-2"><h4>Contact About</h4></div>
+    <div class="col-sm-3"><h4>Prayer Requests</h4></div>
+  </div>
   <%= for attendee <- @attendees do %>
     <div class="row">
-      <div class="col-sm-12">
-        <h3><%= attendee.name %><h3>
+      <div class="col-sm-3">
+        <h4><%= attendee.name %><h4>
       </div>
-    </div>
     <%= for weekly_info <- attendee.weekly_info do %>
-      <div class="row">
-        <div class="col-sm-3 col-sm-offset-1">
-          Date: <%= Timex.format!(
-              weekly_info.week_date,
-              "%m-%d-%Y",
-              :strftime
-          ) %>
+        <div class="col-sm-2">
+          <%= weekly_info.service %>
         </div>
-        <div class="col-sm-3">Service: <%= weekly_info.service %></div>
-        <%= if weekly_info.attending_meal do %>
-          <div class="col-sm-5">
-            Attending Meal: <%= weekly_info.num_kids %> Kids, <%= weekly_info.num_teens %> Teens, <%= weekly_info.num_adults %> Adults
-          </div>
+        <div class="col-sm-2">
+          <%= if weekly_info.attending_meal do %>
+            <%= weekly_info.num_kids %> Kids<br />
+            <%= weekly_info.num_teens %> Teens<br />
+            <%= weekly_info.num_adults %> Adults
+          <%= else %>
+            Not attending
+          <% end %>
         </div>
-        <div class="row">
-          <div class="col-sm-11 col-sm-offset-1"><%= weekly_info.prayers %></div>
+        <div class="col-sm-2">
+          <%= weekly_info.contact %>
         </div>
-        <% else %>
-          <div class="col-sm-5"><%= weekly_info.prayers %></div>
+        <div class="col-sm-3">
+          <%= weekly_info.prayers %>
         </div>
-        <% end %>
+      </div>
       <% end %>
-  <% end %>
-
+      <hr />
+    <% end %>
   <% else %>
     <p>NO ATTENDEES!</p>
   <% end%>
