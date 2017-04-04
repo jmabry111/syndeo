@@ -9,32 +9,34 @@
     <div class="col-sm-3"><h4>Prayer Requests</h4></div>
   </div>
   <%= for attendee <- @attendees do %>
-    <div class="row">
-      <div class="col-sm-3">
-        <h4><%= attendee.name %><h4>
-      </div>
-    <%= for weekly_info <- attendee.weekly_info do %>
-        <div class="col-sm-2">
-          <%= weekly_info.service %>
-        </div>
-        <div class="col-sm-2">
-          <%= if weekly_info.attending_meal do %>
-            <%= weekly_info.num_kids %> Kids<br />
-            <%= weekly_info.num_teens %> Teens<br />
-            <%= weekly_info.num_adults %> Adults
-          <%= else %>
-            Not attending
-          <% end %>
-        </div>
-        <div class="col-sm-2">
-          <%= weekly_info.contact %>
-        </div>
+    <%= if Enum.any?(attendee.weekly_info) do %>
+      <div class="row">
         <div class="col-sm-3">
-          <%= weekly_info.prayers %>
+          <h4><%= attendee.name %><h4>
         </div>
-      </div>
+      <%= for weekly_info <- attendee.weekly_info do %>
+          <div class="col-sm-2">
+            <%= weekly_info.service %>
+          </div>
+          <div class="col-sm-2">
+            <%= if weekly_info.attending_meal do %>
+              <%= weekly_info.num_kids %> Kids<br />
+              <%= weekly_info.num_teens %> Teens<br />
+              <%= weekly_info.num_adults %> Adults
+            <%= else %>
+              Not attending
+            <% end %>
+          </div>
+          <div class="col-sm-2">
+            <%= weekly_info.contact %>
+          </div>
+          <div class="col-sm-3">
+            <%= weekly_info.prayers %>
+          </div>
+        </div>
+        <% end %>
+        <hr />
       <% end %>
-      <hr />
     <% end %>
   <% else %>
     <p>NO ATTENDEES!</p>
