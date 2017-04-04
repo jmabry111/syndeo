@@ -24,3 +24,11 @@
     </div>
   </div>
 </div>
+<div class="row">
+  <div class="col-sm-2">
+    <%= link "All attendees", to: admin_attendee_path(@conn, :index), class: "btn btn-primary" %>
+  </div>
+  <div class="col-sm-2">
+    <%= link "Current week info", to: admin_weekly_info_path(@conn, :index), class: "btn btn-primary" %>
+  </div>
+</div>

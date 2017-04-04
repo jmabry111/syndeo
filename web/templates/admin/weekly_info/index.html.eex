@@ -12,7 +12,7 @@
     <%= if Enum.any?(attendee.weekly_info) do %>
       <div class="row">
         <div class="col-sm-3">
-          <h4><%= attendee.name %><h4>
+          <h4><%= link attendee.name, to: admin_attendee_path(@conn, :show, attendee) %><h4>
         </div>
       <%= for weekly_info <- attendee.weekly_info do %>
           <div class="col-sm-2">

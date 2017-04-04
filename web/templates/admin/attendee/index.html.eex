@@ -12,12 +12,11 @@
   <tbody>
 <%= for attendee <- @attendees do %>
     <tr>
-      <td><%= attendee.name %></td>
+      <td><%= link attendee.name, to: admin_attendee_path(@conn, :show, attendee) %></td>
       <td><%= attendee.email %></td>
 
       <td class="text-right">
-        <%= link "Show", to: admin_attendee_path(@conn, :show, attendee), class: "btn btn-default btn-xs" %>
-        <%= link "Edit", to: admin_attendee_path(@conn, :edit, attendee), class: "btn btn-default btn-xs" %>
+        <%= link "View info", to: admin_attendee_path(@conn, :show, attendee), class: "btn btn-default btn-xs" %>
         <%= delete_button to: admin_attendee_path(@conn, :delete, attendee), class: "btn btn-danger btn-xs" do %>
           <%= gettext("Delete Attendee") %>
         <% end %>
