@@ -67,4 +67,7 @@ defmodule Syndeo.Attendee do
       "Adult"
     ]
   end
+
+  def to_display(true), do: "Texts messages are accepted."
+  def to_display(false), do: "Texts messages are not accepted."
 end

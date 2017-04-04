@@ -12,3 +12,11 @@
 .row-bottom-border {
   border-bottom: 1px solid #ccc;
 }
+
+.larger-text {
+  font-size: 1.2em;
+}
+
+.normal-size {
+  font-size: .9em;
+}

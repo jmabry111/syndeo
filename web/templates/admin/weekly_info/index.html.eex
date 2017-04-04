@@ -1,5 +1,5 @@
 <div class="container">
-<h2>Attendee info</h2>
+  <h2>Attendee info for <%= Syndeo.WeeklyInfo.display_last_sunday() %></h2>
 <%= if Enum.any?(@attendees) do %>
   <div class="row row-bottom-border">
     <div class="col-sm-3"><h4>Name</h4></div>
