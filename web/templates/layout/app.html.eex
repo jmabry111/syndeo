@@ -16,12 +16,15 @@
     <div class="container">
       <header class="header">
         <nav role="navigation">
-          <%= if @conn.assigns[:current_user] do %>
-            <ul class="nav nav-pills pull-left">
-              <li>Hi, <%= @current_user.email %>!</li>
-            </ul>
-          <% end %>
           <ul class="nav nav-pills pull-right">
+            <%= if @conn.assigns[:current_user] do %>
+              <li><%= link "Current Week", to: admin_weekly_info_path(@conn, :index) %></li>
+              <li><%= link "Attendees", to: admin_attendee_path(@conn, :index) %></li>
+            <% else %>
+              <li><%= link "Admin Sign In", to: session_path(@conn, :new) %></li>
+            <% end %>
+          </ul>
+          <ul class="nav nav-pills pull-left">
             <%= if @conn.assigns[:current_attendee] do %>
               <li>Welcome,<br /><%= @current_attendee.name %>!</li>
               <li><%= link "Connect", to: attendee_weekly_info_path(@conn, :index, @current_attendee.id), class: "btn btn-xs btn-default" %></li>

@@ -1,0 +1,20 @@
+<div class="container">
+  <h2>Attendee info for <%= Syndeo.WeeklyInfo.display_last_sunday() %></h2>
+  <%= if Enum.any?(@attendees) do %>
+    <div class="row row-bottom-border">
+      <div class="col-sm-3"><h4>Name</h4></div>
+      <div class="col-sm-2"><h4>Service</h4></div>
+      <div class="col-sm-2"><h4>Meal</h4></div>
+      <div class="col-sm-2"><h4>Contact About</h4></div>
+      <div class="col-sm-3"><h4>Prayer Requests</h4></div>
+    </div>
+    <%= for attendee <- @attendees do %>
+      <%= if Enum.any?(attendee.weekly_info) do %>
+        <%= render "weekly_info.html", attendee: attendee, conn: @conn %>
+        <hr />
+      <% end %>
+    <% end %>
+  <% else %>
+    <p>NO ATTENDEES!</p>
+  <% end%>
+</div>

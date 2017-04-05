@@ -67,4 +67,7 @@ defmodule Syndeo.Attendee do
       "Adult"
     ]
   end
+
+  def display_sms_availability(true), do: "Texts messages are accepted."
+  def display_sms_availability(false), do: "Texts messages are not accepted."
 end

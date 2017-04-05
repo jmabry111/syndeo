@@ -5,3 +5,42 @@
   to: attendee_weekly_info_path(@conn, :index, @attendee),
   class: "btn btn-primary",
 ) %>
+<hr />
+<h3>My information:</h3>
+
+<div class="well larger-text">
+  <div class="row">
+    <div class="col-sm-6">
+      <address>
+        <strong>Address:</strong><br />
+        <%= @attendee.street %><br />
+        <%= @attendee.city %>, <%= @attendee.state %> <%= @attendee.zip %>
+      </address>
+    </div>
+    <div class="col-sm-6">
+      <strong>Email address:</strong> <%= @attendee.email %><br /><br />
+      <strong>Phone number:</strong> <%= @attendee.phone |> number_to_phone %><br />
+      <em class="normal-size">* <%= @attendee.sms |> Syndeo.Attendee.display_sms_availability() %></em><br /><br />
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6">
+      <strong>Membership status:</strong> <%= @attendee.membership_status %>
+    </div>
+    <div class="col-sm-6">
+      <strong>Age range:</strong> <%= @attendee.age_range %>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-4">
+    <%= link "Edit Profile", to: attendee_path(@conn, :edit, @attendee), class: "btn btn-primary" %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-4">
+     <%= delete_button to: attendee_path(@conn, :delete, @attendee), class:      "btn btn-danger" do %>
+       <%= gettext("Delete All Information") %>
+     <% end %>
+   </div>
+ </div>

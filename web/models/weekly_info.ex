@@ -57,9 +57,24 @@ defmodule Syndeo.WeeklyInfo do
     ]
   end
 
+  def display_last_sunday do
+    Timex.format!(
+    Timex.beginning_of_week(Timex.today, :sun),
+    "%m-%d-%Y",
+    :strftime
+  )
+  end
 
   def week_of do
-    Timex.beginning_of_week(Timex.today, :sun)
+    today = Timex.today
+    lastsun = Timex.beginning_of_week(Timex.today, :sun)
+    nextsun = Timex.beginning_of_week(Timex.shift(today, days: 7), :sun)
+
+    if Timex.diff(today, lastsun, :days) < 4 do
+      lastsun
+    else
+      nextsun
+    end
   end
 
   def to_display(true), do: "Yes"

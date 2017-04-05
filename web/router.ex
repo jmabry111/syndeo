@@ -25,13 +25,12 @@ defmodule Syndeo.Router do
     resources "/attendees", AttendeeController, only: [:new, :create]
     get "/", AttendeeController, :new
     resources "/tokenized_email", TokenizedEmailController, only: [:create]
-    resources "/meals", MealController
     resources "/ics", IcsController, only: [:show]
   end
 
   scope "/", Syndeo do
     pipe_through [:browser, Syndeo.RequireAttendee]
-    resources "/attendees", AttendeeController, only: [:show]
+    resources "/attendees", AttendeeController, only: [:show, :edit, :update, :delete]
     resources "/attendees", AttendeeController, only: [] do
       resources "/weekly_info", WeeklyInfoController, only: [:new, :create, :index, :delete]
     end
@@ -41,5 +40,7 @@ defmodule Syndeo.Router do
     pipe_through [:browser, Syndeo.RequireAdmin]
     resources "/users", Admin.UserController, only: [:index, :create, :new, :edit, :update, :delete]
     resources "/attendees", Admin.AttendeeController, only: [:index, :edit, :delete, :show]
+    resources "/meals", Admin.MealController
+    resources "/weekly_info", Admin.WeeklyInfoController, only: [:index]
   end
 end

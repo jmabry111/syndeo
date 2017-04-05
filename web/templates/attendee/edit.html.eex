@@ -3,4 +3,3 @@
 <%= render "form.html", changeset: @changeset,
                         action: attendee_path(@conn, :update, @attendee) %>
 
-<%= link "Back", to: attendee_path(@conn, :index) %>
