@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-sm-3">
+    <h4><%= link @attendee.name, to: admin_attendee_path(@conn, :show, @attendee) %><h4>
+  </div>
+  <%= for weekly_info <- @attendee.weekly_info do %>
+    <div class="col-sm-2">
+      <%= weekly_info.service %>
+    </div>
+    <div class="col-sm-2">
+      <%= if weekly_info.attending_meal do %>
+        <%= weekly_info.num_kids %> Kids<br />
+        <%= weekly_info.num_teens %> Teens<br />
+        <%= weekly_info.num_adults %> Adults
+      <%= else %>
+        Not attending
+      <% end %>
+    </div>
+    <div class="col-sm-2">
+      <%= weekly_info.contact %>
+    </div>
+    <div class="col-sm-3">
+      <%= weekly_info.prayers %>
+    </div>
+  <% end %>
+</div>
