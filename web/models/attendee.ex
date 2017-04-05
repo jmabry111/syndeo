@@ -68,6 +68,6 @@ defmodule Syndeo.Attendee do
     ]
   end
 
-  def to_display(true), do: "Texts messages are accepted."
-  def to_display(false), do: "Texts messages are not accepted."
+  def display_sms_availability(true), do: "Texts messages are accepted."
+  def display_sms_availability(false), do: "Texts messages are not accepted."
 end

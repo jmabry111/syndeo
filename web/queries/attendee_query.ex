@@ -11,11 +11,12 @@ defmodule Syndeo.AttendeeQuery do
   end
 
   def find_attendees_with_current_week_info do
-    Repo.all(Attendee)
-    |> Repo.preload(weekly_info: (from w in WeeklyInfo, where: [week_date: ^current_week()]))
+    Attendee
+    |> Repo.all
+    |> Repo.preload(weekly_info: (from w in WeeklyInfo, where: [week_date: ^sunday_of_current_week()]))
   end
 
-  defp current_week do
+  defp sunday_of_current_week do
     Timex.beginning_of_week(Timex.today, :sun)
   end
 end
