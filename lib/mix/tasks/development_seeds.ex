@@ -46,6 +46,7 @@ defmodule Mix.Tasks.DevelopmentSeeds do
     ~w(
        attendees
        weeklyinfo
+       users
      )
   end
 
