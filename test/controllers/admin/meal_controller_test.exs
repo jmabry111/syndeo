@@ -15,8 +15,10 @@ defmodule Syndeo.Admin.MealControllerTest do
   @invalid_attrs %{}
 
   test "lists all entries on index", %{conn: conn, id: id} do
+    meal = build(:meal) |> save
     conn = get conn, admin_meal_path(conn, :index, as: id)
-    assert html_response(conn, 200) =~ "Listing meals"
+    assert html_response(conn, 200) =~ "Weekly Meals"
+    assert html_response(conn, 200) =~ meal.description
   end
 
   test "renders form for new resources", %{conn: conn, id: id} do

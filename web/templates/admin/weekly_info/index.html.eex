@@ -11,7 +11,6 @@
     <%= for attendee <- @attendees do %>
       <%= if Enum.any?(attendee.weekly_info) do %>
         <%= render "weekly_info.html", attendee: attendee, conn: @conn %>
-        <hr />
       <% end %>
     <% end %>
   <% else %>

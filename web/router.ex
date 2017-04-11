@@ -30,8 +30,7 @@ defmodule Syndeo.Router do
 
   scope "/", Syndeo do
     pipe_through [:browser, Syndeo.RequireAttendee]
-    resources "/attendees", AttendeeController, only: [:show, :edit, :update, :delete]
-    resources "/attendees", AttendeeController, only: [] do
+    resources "/attendees", AttendeeController, only: [:show, :edit, :update, :delete] do
       resources "/weekly_info", WeeklyInfoController, only: [:new, :create, :index, :delete]
     end
   end

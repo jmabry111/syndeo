@@ -1,35 +1,24 @@
-<h2>Listing meals</h2>
+<div class="row divider">
+  <div class="col-sm-10">
+    <h2>Weekly Meals</h2>
+  </div>
+  <div class="col-sm-2">
+    <%= link "New meal", to: admin_meal_path(@conn, :new), class: "btn btn-primary" %>
+  </div>
+</div>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Description</th>
-      <th>Date</th>
-
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
 <%= for meal <- @meals do %>
-    <tr>
-      <td><%= meal.description %></td>
-      <td>
-          <%= Timex.format!(
-              meal.date,
-              "%m-%d-%Y",
-              :strftime
-          ) %>
-      </td>
-      <td class="text-right">
-        <%= link "Show", to: admin_meal_path(@conn, :show, meal), class: "btn btn-default btn-xs" %>
-        <%= link "Edit", to: admin_meal_path(@conn, :edit, meal), class: "btn btn-default btn-xs" %>
-        <%= delete_button to: admin_meal_path(@conn, :delete, meal), class: "btn btn-danger btn-xs" do %>
+  <div class="row top-space row-bottom-border row-striped">
+    <div class="col-sm-5 larger-text">
+      <strong><%= link meal.description, to: admin_meal_path(@conn, :edit, meal) %></strong>
+    </div>
+    <div class="col-sm-4 larger-text">
+      <%= meal.date |> display_date %>
+    </div>
+    <div class="col-sm-3 text-right">
+      <%= delete_button to: admin_meal_path(@conn, :delete, meal), class: "btn btn-danger btn-xs" do %>
           <%= gettext("Remove Meal") %>
-        <% end %>
-      </td>
-    </tr>
+      <% end %>
+    </div>
+  </div>
 <% end %>
-  </tbody>
-</table>
-
-<%= link "New meal", to: admin_meal_path(@conn, :new) %>
