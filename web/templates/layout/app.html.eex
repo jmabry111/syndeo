@@ -19,7 +19,7 @@
           <ul class="nav nav-pills pull-right">
             <%= if @conn.assigns[:current_user] do %>
               <div class="dropdown pull-right">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin Menu <span class="caret"</span></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin Menu<b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li><%= link "Current Week", to: admin_weekly_info_path(@conn, :index) %></li>
                   <li><%= link "Attendees", to: admin_attendee_path(@conn, :index) %></li>

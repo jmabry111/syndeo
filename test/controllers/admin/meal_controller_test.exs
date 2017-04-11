@@ -16,7 +16,7 @@ defmodule Syndeo.Admin.MealControllerTest do
 
   test "lists all entries on index", %{conn: conn, id: id} do
     conn = get conn, admin_meal_path(conn, :index, as: id)
-    assert html_response(conn, 200) =~ "Listing meals"
+    assert html_response(conn, 200) =~ "Weekly Meals"
   end
 
   test "renders form for new resources", %{conn: conn, id: id} do
