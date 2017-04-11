@@ -18,11 +18,16 @@
         <nav role="navigation">
           <ul class="nav nav-pills pull-right">
             <%= if @conn.assigns[:current_user] do %>
-              <li><%= link "Current Week", to: admin_weekly_info_path(@conn, :index) %></li>
-              <li><%= link "Attendees", to: admin_attendee_path(@conn, :index) %></li>
-              <li><%= link "Meals", to: admin_meal_path(@conn, :index) %></li>
+              <div class="dropdown pull-right">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin Menu <span class="caret"</span></a>
+                <ul class="dropdown-menu">
+                  <li><%= link "Current Week", to: admin_weekly_info_path(@conn, :index) %></li>
+                  <li><%= link "Attendees", to: admin_attendee_path(@conn, :index) %></li>
+                  <li><%= link "Meals", to: admin_meal_path(@conn, :index) %></li>
+                </ul>
+              </div>
             <% else %>
-              <li><%= link "Admin Sign In", to: session_path(@conn, :new) %></li>
+                <li><%= link "Admin Sign In", to: session_path(@conn, :new) %></li>
             <% end %>
           </ul>
           <ul class="nav nav-pills pull-left">
