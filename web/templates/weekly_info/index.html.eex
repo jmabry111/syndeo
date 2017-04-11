@@ -17,11 +17,7 @@
   <%= for weekly_info <- @weekly_info do %>
       <tr>
         <td>
-          <%= Timex.format!(
-              weekly_info.week_date,
-              "%m-%d-%Y",
-              :strftime
-          ) %>
+          <%= weekly_info.week_date |> display_date %>
         </td>
         <td><%= weekly_info.service %></td>
         <td><%= weekly_info.attending_meal |> to_display %></td>

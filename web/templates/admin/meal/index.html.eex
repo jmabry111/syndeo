@@ -13,11 +13,7 @@
       <strong><%= link meal.description, to: admin_meal_path(@conn, :edit, meal) %></strong>
     </div>
     <div class="col-sm-4 larger-text">
-      <%= Timex.format!(
-          meal.date,
-          "%m-%d-%Y",
-          :strftime
-          ) %>
+      <%= meal.date |> display_date %>
     </div>
     <div class="col-sm-3 text-right">
       <%= delete_button to: admin_meal_path(@conn, :delete, meal), class: "btn btn-danger btn-xs" do %>
