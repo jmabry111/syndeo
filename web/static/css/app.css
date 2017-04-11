@@ -25,10 +25,10 @@
   padding-top: 10px;
 }
 
-.row-striped:nth-of-type(odd) {
+.row-striped:nth-of-type(even) {
   background-color: #f5f5f5;
 }
-.row-striped:nth-of-type(even) {
+.row-striped:nth-of-type(odd) {
   background-color: #dcdcdc;
 }
 
