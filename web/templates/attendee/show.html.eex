@@ -20,7 +20,7 @@
     <div class="col-sm-6">
       <strong>Email address:</strong> <%= @attendee.email %><br /><br />
       <strong>Phone number:</strong> <%= @attendee.phone |> number_to_phone %><br />
-      <em class="normal-size">* <%= @attendee.sms |> Syndeo.Attendee.display_sms_availability() %></em><br /><br />
+      <em class="normal-size">* <%= @attendee.sms |> display_sms_availability() %></em><br /><br />
     </div>
   </div>
   <div class="row">

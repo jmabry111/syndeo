@@ -76,7 +76,4 @@ defmodule Syndeo.WeeklyInfo do
       nextsun
     end
   end
-
-  def to_display(true), do: "Yes"
-  def to_display(false), do: "No"
 end
