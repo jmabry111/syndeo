@@ -13,7 +13,7 @@ defmodule Syndeo.Admin.AttendeeControllerTest do
 
   test "lists all entries on index", %{conn: conn, id: id} do
     conn = get conn, admin_attendee_path(conn, :index, as: id)
-    assert html_response(conn, 200) =~ "Listing attendees"
+    assert html_response(conn, 200) =~ "Attendees"
   end
 
   test "shows chosen resource", %{conn: conn, id: id} do
