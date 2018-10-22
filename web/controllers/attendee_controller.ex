@@ -27,7 +27,7 @@ defmodule Syndeo.AttendeeController do
 
         conn
         |> AttendeeSession.login_attendee(attendee)
-        |> put_flash(:info, "Attendee created successfully.")
+        |> put_flash(:info, "Thank you for connecting... next time will be less work! 😉")
         |> redirect(to: attendee_weekly_info_path(conn, :index, attendee))
       {:error, changeset} ->
         if email_taken?(changeset) do
