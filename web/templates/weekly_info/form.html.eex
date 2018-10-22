@@ -5,7 +5,7 @@
         <%= label f, :week_date, gettext("Week of:") %>
       </div>
       <div class="col-sm-6">
-        <%= input f, :week_date, class: "form-control", label: false, value: Syndeo.WeeklyInfo.week_of(), id: "datepicker" %>
+        <%= input f, :week_date, class: "form-control", label: false, value: Syndeo.WeeklyInfo.week_of() %>
       </div>
     </div>
 
