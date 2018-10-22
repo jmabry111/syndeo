@@ -52,7 +52,6 @@ defmodule Syndeo.WeeklyInfo do
 
   def services do
     [
-      "9:00",
       "10:30"
     ]
   end
