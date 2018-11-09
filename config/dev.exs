@@ -40,4 +40,6 @@ config :syndeo, Syndeo.Repo,
   hostname: "localhost",
   pool_size: 10
 
-config :syndeo, Syndeo.Mailer, adapter: Bamboo.LocalAdapter
+config :syndeo, Syndeo.Mailer,
+  adapter: Bamboo.LocalAdapter,
+  open_email_in_browser_url: "http://localhost:4000/sent_emails"

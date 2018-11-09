@@ -27,6 +27,6 @@ defmodule Syndeo.AttendeeEmail do
 
   def base_email do
     new_email()
-    |> from("noreply@example.com")
+    |> from("noreply@stonemcc.com")
   end
 end

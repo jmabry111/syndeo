@@ -44,17 +44,17 @@ defmodule Syndeo.Mixfile do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:bamboo, "~> 0.8"},
+      {:bamboo, "~> 1.1.0"},
       {:cowboy, "~> 1.1.2"},
       {:doorman, "~> 0.5.1"},
       {:ex_machina, "~> 2.0.0"},
       {:ex_spec, "~> 2.0.1", only: :test},
-      {:formulator, "~> 0.0.6"},
-      {:gettext, "~> 0.13.1"},
-      {:hound, "~> 1.0.3"},
+      {:formulator, "~> 0.1.7"},
+      {:gettext, "~> 0.16.0"},
+      {:hound, "~> 1.0.4"},
       {:icalendar, github: "jmabry111/icalendar"},
       {:mailgun, "~> 0.1.2"},
-      {:number, "~> 0.5.1"},
+      {:number, "~> 0.5.7"},
       {:phoenix, "~> 1.2.3"},
       {:phoenix_ecto, "~> 3.2.3"},
       {:phoenix_html, "~> 2.9.3"},

@@ -1,5 +1,8 @@
 #!/usr/bin/env sh
 
+# Set QT Platform offscreen
+export QT_QPA_PLATFORM=offscreen
+
 # Exit if any subcommand fails
 set -e
 
